@@ -1,5 +1,3 @@
-
-
 Some small changes and one major bug fix have been checked into Subversion today:
 
 * The controller action that serves up event-selector.js, eliminating the need to manually copy it to your public/javascripts folder, was looking for the js file in the wrong place, stopping the whole plugin from working. If you've already discovered this, **please run an update**.

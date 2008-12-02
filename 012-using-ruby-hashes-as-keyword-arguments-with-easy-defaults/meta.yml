@@ -1,4 +1,4 @@
 --- 
-:format: :textile
+:format: :markdown
 :title: Using Ruby hashes as keyword arguments, with easy defaults
 :published_on: Thu Jul 27 10:36:00 UTC 2006

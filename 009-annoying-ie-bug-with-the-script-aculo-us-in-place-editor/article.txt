@@ -1,5 +1,3 @@
-
-
 I came across a rather annoying bug with the [script.aculo.us](http://script.aculou.us) effects library the other day. If you use pass in a loadTextUrl parameter to make the inline editor grab the value from the server, Internet Explorer would throw up the error *'Can't move focus to the control because it's invisible not enabled or of a type that does not accept focus.'*.
 
 After digging around in the inplace-editor code, it seems that it was disabling the inplace form field while it sent off an AJAX request to the server to grab the value, then re-enabling it once it the data was returned. The problem seemed to be down to the difference in the way IE and other browsers place focus on the field once it was inserted. Safari and Firefox were both placing focus on the field before it was disabled, whilst IE was trying to focus it after it had been disabled. This is what was causing IE to barf.

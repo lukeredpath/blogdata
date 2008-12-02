@@ -4,27 +4,27 @@ The concept is incredibly simple; you write your own plugin pack - nothing more 
 
 I've initially implemented this as a Rails plugin, so install it to get going:
 
-bc(shell).. $ ./script/plugin install http://opensource.agileevolved.com/svn/root/rails_plugin_pack
+	$ ./script/plugin install http://opensource.agileevolved.com/svn/root/rails_plugin_pack
 
-p. This will give you three new Rake tasks - pluginpack:install, pluginpack:uninstall and pluginpack:about. What they do should be pretty self-explanatory. They all take a pack url/path as an argument, in the form PACK=url\_or\_path, for example:
+This will give you three new Rake tasks - pluginpack:install, pluginpack:uninstall and pluginpack:about. What they do should be pretty self-explanatory. They all take a pack url/path as an argument, in the form PACK=url\_or\_path, for example:
 
-bc(shell).. $ rake pluginpack:install PACK=http://www.lukeredpath.co.uk/mygreatpack.pluginpack
+	$ rake pluginpack:install PACK=http://www.lukeredpath.co.uk/mygreatpack.pluginpack
 
-p. Currently, Subversion is required to use the plugin as it installs each plugin by doing an svn co of each plugin. I plan to expand on the ways of installing the plugins soon, including support for svn export and svn:externals.
+Currently, Subversion is required to use the plugin as it installs each plugin by doing an svn co of each plugin. I plan to expand on the ways of installing the plugins soon, including support for svn export and svn:externals.
 
 Writing your own pluginpacks is simple - the file extension can be whatever you like although I prefer to use the standard .pluginpack suffix. The files themselves are very simple and are written in [YAML](http://www.yaml.org/). Here's an example plugin pack file (which comes bundled with the rails\_plugin\_pack plugin itself):
 
-bc(yaml).. about:
-  name: Example Pack
-  description: An example plugin pack
-  author: Luke Redpath
-  email: contact@lukeredpath.co.uk
-  website: http://www.lukeredpath.co.uk
-plugins:
-  unobtrusive_javascript: http://opensource.agileevolved.com/svn/root/rails_plugins/unobtrusive_javascript/tags/rel-0.1
-  navigation_mappings: http://opensource.agileevolved.com/svn/root/rails_plugins/navigation_mappings/trunk
+	about:
+	  name: Example Pack
+	  description: An example plugin pack
+	  author: Luke Redpath
+	  email: contact@lukeredpath.co.uk
+	  website: http://www.lukeredpath.co.uk
+	plugins:
+	  unobtrusive_javascript: http://opensource.agileevolved.com/..[truncated]
+	  navigation_mappings: http://opensource.agileevolved.com/..[truncated]
 
-p. All of the meta-data is optional, although if you omit a name it will result in your plugin being called "Untitled Plugin" so I recommend giving every one of your packs a name, at least.
+All of the meta-data is optional, although if you omit a name it will result in your plugin being called "Untitled Plugin" so I recommend giving every one of your packs a name, at least.
 
 So what possible uses could this have? I've already discussed facilitating the installation of the same group of plugins on each new project - you could have your own personal or company-wide "standard" plugin pack that you use on each new project. You could write a blog post about your favorite Rails plugins and offer a plugin pack containing each plugin discussed in your article. You could use it to group related plugins. You could even use it as a basic dependency mechanism, by offering packs of plugins that depend on each other (although this is no substitute for a proper dependency mechanism).
 

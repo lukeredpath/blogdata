@@ -1,4 +1,4 @@
 --- 
-:format: :textile
+:format: :markdown
 :title: Unobtrusive Javascript broken in Edge Rails, small fix release
 :published_on: Thu Aug 10 12:26:00 UTC 2006

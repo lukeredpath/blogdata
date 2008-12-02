@@ -4,21 +4,21 @@ The concept is incredibly simple; you write your own plugin pack - nothing more 
 
 I've initially implemented this as a Rails plugin, so install it to get going:
 
-<filter:jscode lang="shell">
+<pre><code class="shell">
 $ ./script/plugin install http://opensource.agileevolved.com/svn/root/rails_plugin_pack
-</filter:jscode>
+</code></pre>
 
 This will give you three new Rake tasks - pluginpack:install, pluginpack:uninstall and pluginpack:about. What they do should be pretty self-explanatory. They all take a pack url/path as an argument, in the form PACK=url\_or\_path, for example:
 
-<filter:jscode lang="shell">
+<pre><code class="shell">
 $ rake pluginpack:install PACK=http://www.lukeredpath.co.uk/mygreatpack.pluginpack
-</filter:jscode>
+</code></pre>
 
 Currently, Subversion is required to use the plugin as it installs each plugin by doing an svn co of each plugin. I plan to expand on the ways of installing the plugins soon, including support for svn export and svn:externals.
 
 Writing your own pluginpacks is simple - the file extension can be whatever you like although I prefer to use the standard .pluginpack suffix. The files themselves are very simple and are written in [YAML](http://www.yaml.org/). Here's an example plugin pack file (which comes bundled with the rails\_plugin\_pack plugin itself):
 
-<filter:jscode lang="yaml">
+<pre><code class="yaml">
 about:
   name: Example Pack
   description: An example plugin pack
@@ -28,7 +28,7 @@ about:
 plugins:
   unobtrusive_javascript: http://opensource.agileevolved.com/svn/root/rails_plugins/unobtrusive_javascript/tags/rel-0.1
   navigation_mappings: http://opensource.agileevolved.com/svn/root/rails_plugins/navigation_mappings/trunk
-</filter:jscode>
+</code></pre>
 
 All of the meta-data is optional, although if you omit a name it will result in your plugin being called "Untitled Plugin" so I recommend giving every one of your packs a name, at least.
 

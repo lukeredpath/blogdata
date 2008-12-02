@@ -10,15 +10,15 @@ Before you can start sending SMS messages from your Rails app, you'll need a Cli
 
 Once you've signed up, you need to install the Ruby Clickatell gem. I've just released version 0.4 and its fast approaching being stable for production use - all it needs is some users to test it out a bit more extensively. So install it and give it a go:
 
-<filter:jscode lang="shell">
+<pre><code class="shell">
 $ sudo gem install clickatell
-</filter:jscode>
+</code></pre>
 
 The gem also comes with a handy command-line utility, "sms", which can be used to send SMS messages directly from the command line. For more information, simply run:
 
-<filter:jscode lang="shell">
+<pre><code class="shell">
 $ sms --help
-</filter:jscode>
+</code></pre>
 
 More information can be found on the "website":http://clickatell.rubyforge.org.
 
@@ -26,7 +26,7 @@ h3. Integrating with Rails
 
 For our basic example application, which will use REST-ful conventions, we will expose a single resource - sms - which we can POST to to send an SMS to a specified recipient. First of all, lets create a simple wrapper around the Clickatell API which will act as our "resource" that takes a hash containing our username/password/api-key and has an ActiveRecord-style create method.
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 require 'clickatell'
 
 class SMS
@@ -47,39 +47,39 @@ class SMS
       )
     end
 end
-</filter:jscode>
+</code></pre>
 
 The above wrapper isn't strictly necessary but it helps to keep our controller as "skinny":http://weblog.jamisbuck.org/2006/10/18/skinny-controller-fat-model as possible.
 
 For convenience, we'll want to keep our Clickatell credentials in a YAML file in the config folder of our Rails app:
 
-<filter:jscode lang="yaml">
+<pre><code class="yaml">
 # config/clickatell.yml
 api_key: abcdefghi123
 username: joebloggs
 password: secret
-</filter:jscode>
+</code></pre>
 
 We'll also want to access this config within our Rails app easily:
 
-<filter:jscode lang="yaml">
+<pre><code class="yaml">
 # config/environments/production.rb
 CLICKATELL_CONFIG = YAML.load(File.open(File.join(RAILS_ROOT, 'config', 'clickatell.yml')))
-</filter:jscode>
+</code></pre>
 
 h3. Bringing it altogether
 
 Now we'll want to configure our routing to expose our SMS resource:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 ActionController::Routing::Routes.draw do |map|
   map.resource :sms
 end
-</filter:jscode>
+</code></pre>
 
 Next, we'll create our form under app/views/sms/new.rhtml:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 &lt;% form_tag '/sms', :method => :post do -%&gt;
   &lt;label>Enter the recipients mobile number:&lt;/label&gt;
   &lt;%= text_field_tag "recipient" %&gt;
@@ -87,11 +87,11 @@ Next, we'll create our form under app/views/sms/new.rhtml:
   &lt;%= text_area_tag "message_text" %&gt;
   &lt;%= submit_tag "Send SMS" %&gt;
 &lt;% end %&gt;
-</filter:jscode>
+</code></pre>
 
 Finally, all we have to do is create our controller's create method to handle the form submission.
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 class SmsController < ApplicationController
   def create
     sms = SMS.new(CLICKATELL_CONFIG)
@@ -103,7 +103,7 @@ class SmsController < ApplicationController
     redirect_to :back
   end
 end
-</filter:jscode>
+</code></pre>
 
 And thats all there is to it. Of course, in a real application you might want to think about things such as validation of required attributes and message length. I'll leave that as an exercise to the reader.
 

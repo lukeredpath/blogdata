@@ -22,9 +22,9 @@ The class and module snippets, like a lot of newer snippets, use a single tab ex
 
 Finally, there are snippets for many of the common tasks performed when writing a Ruby script, such as entering the shebang line <strong>[rb]</strong>, requiring files <strong>[req]</strong>, generating symbol => value key/value pairs for hashes <strong>[:]</strong>, lambda blocks <strong>[lam]</strong>, and one of my favorites, path-from-here <strong>[patfh]</strong> which is used for getting the path relative to the current script and generates:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 File.join(File.dirname(__FILE__), *%w<strong>[rel path here]</strong>)
-</filter:jscode>
+</code></pre>
 
 h3. Writing classes/modules
 
@@ -32,7 +32,7 @@ In addition to the snippets for defining classes and modules, there are some oth
 
 If you want to add "Enumerable":http://ruby-doc.org/core/classes/Enumerable.html support to your class, you need to include the Enumerable module and define an each method. To do this in Textmate, simply create a new class then inside your class definition, use the Enumerable snippet <strong>[Enum]</strong>. This will generate something like this for you:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 class Foo
   include Enumerable
 
@@ -40,7 +40,7 @@ class Foo
 
   end
 end
-</filter:jscode>
+</code></pre>
 
 In a similar fashion, the Comparable snippet <strong>[Comp]</strong> will include the Comparable module and create a stub <=> method for you to fill in.
 

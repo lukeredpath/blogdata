@@ -12,7 +12,7 @@ However, my  main concern with Rails when it comes to Demeter violations are tho
 
 Our new project was written using the Rails 2.0 pre-release and was written in a REST-ful fashion. When dealing with nested resources we would often have code that looked a little bit like this:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 class WidgetsController < ApplicationController
 
   # POST /users/xxx/widgets
@@ -23,11 +23,11 @@ class WidgetsController < ApplicationController
   end
 
 end
-</filter:jscode>
+</code></pre>
 
 We're using the Rails convention of creating our associated widget object directly off of the User has_many association proxy. No apparent problem here but given that we wrote this test-first, look at the lengths we had to go through to make this work using appropriate mocking/stubbing:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 class WidgetsControllerCreateActionTest < Test::Unit::TestCase
   def setup
     # usual rails controller test setup here
@@ -41,7 +41,7 @@ class WidgetsControllerCreateActionTest < Test::Unit::TestCase
     widgets_proxy.expects(:create).with(:name => 'my funky widget')
     post :create, :widget => {:name => 'my funky widget'}
   end
-</filter:jscode>
+</code></pre>
 
 Because we are violating Demeter by getting a reference to the association proxy and then calling the create method on it all from within our controller, we've had to create a mock assocation proxy and stub the association proxy method on user to return it before we can set the expectation that we really care about (the :create call). It might not seem like a big deal, but we also have to make sure we stub @user.widgets to return something in every one of our tests for the create action otherwise we'll find ourselves having problems with :create calls on a NilObject. Now multiply this issue by every single controller that contains a create action and things start to get very tedious.
 
@@ -49,7 +49,7 @@ h3. The solution
 
 The solution itself is not complicated and simply involves encapsulating the association proxy:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 class User
   has_many :widgets
 
@@ -57,11 +57,11 @@ class User
     widgets.create(*args)
   end
 end
-</filter:jscode>
+</code></pre>
 
 Now our tests become much simpler and the intent clearer:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 class WidgetsControllerCreateActionTest < Test::Unit::TestCase
   def setup
     # usual rails controller test setup here
@@ -73,7 +73,7 @@ class WidgetsControllerCreateActionTest < Test::Unit::TestCase
     @user.expects(:create_widget).with(:name => 'my funky widget')
     post :create, :widget => {:name => 'my funky widget'}
   end
-</filter:jscode>
+</code></pre>
 
 For our other tests, we only need to stub one method, the :create_widget method.
 
@@ -81,7 +81,7 @@ Again, whilst this doesn't seem like a lot of effort, we now find ourselves havi
 
 "Demeter's Revenge" is a simple extension to ActiveRecord, written as a Rails plugin that creates a collection of Demeter-friendly methods for your has_many and has_and_belongs_to_many associations. It doesn't require any special configuration or installation - simply install the plugin as you would any other Rails plugin and your methods will become available to you. Here's a quick overview of some of the methods you get access to and their standard Rails equivalent:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 # given a User that has_many Widgets
 user.build_widget(params) # => user.widgets.build(params)
 user.create_widget(params) # => user.widgets.create(params)
@@ -89,13 +89,13 @@ user.number_of_widgets # => user.widgets.size (or .length)
 user.has_widgets? # => user.widgets.any?
 user.has_no_widgets? # => user.widgets.empty?
 user.find_widgets(params) # => user.widgets.find(params)
-</filter:jscode>
+</code></pre>
 
 For more examples, the plugin comes with a suit of "RSpec":http://rspec.rubyforge.org "examples":http://plugins.code.lukeredpath.co.uk/browser/demeters_revenge/trunk/examples. If you want to take a peek under the hood at the implementation, there is a "full suite of specs":http://plugins.code.lukeredpath.co.uk/browser/demeters_revenge/trunk/spec. You can grab the plugin from my Subversion repository:
 
-<filter:jscode lang="shell">
+<pre><code class="shell">
 svn://lukeredpath.co.uk/var/svn/plugins/demeters_revenge/trunk
-</filter:jscode>
+</code></pre>
 
 If you're writing Rails apps and mocks and stubs have been causing you pain and/or Demeter violations make you cry, then hopefully this plugin will be of use to you. If you don't care about Demeter violations and don't use mock's and stubs then its probably of less interest to you but I hope you give it a try anyway. If you have any feedback, feel free to drop me an e-mail (see the "correspondence" link in the site header bar) or leave a comment below.
 

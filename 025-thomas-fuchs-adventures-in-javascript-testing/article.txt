@@ -2,13 +2,13 @@ I'm currently sitting in the main congress hall awaiting the start of Thomas Fuc
 
 I'm going to write this post live; hopefully it won't just come across as a mish-mash of incoherent ramblings.
 
-* Traditional JavaScript "testing" generally revolves around <filter:jscode lang="javascript">alert</filter>. it can be useful sometimes but it generally doesn't offer anything interesting. Use it sparingly.
+* Traditional JavaScript "testing" generally revolves around <pre><code class="javascript">alert</filter>. it can be useful sometimes but it generally doesn't offer anything interesting. Use it sparingly.
 
 * There are many common misconceptions or attitudes towards JavaScript: "we don't need tests for 10 lines of code"; "but you can't debug JavaScript". Wrong and wrong again. Enter unit testing for JavaScript.
 
 * Some options exist already, such as "jsunit":http://www.jsunit.net/. These have their problems, such as awkward syntax or problems with Prototype.
 
-* "Scriptaculous":http://script.aculo.us/ has its own unittest.js library. All you need to do is include the unittest.js file and an empty <filter:jscode lang="html">div</filter> with a "testlog" HTML ID (defaults). Now you're ready to roll with Test.Unit.Runner.
+* "Scriptaculous":http://script.aculo.us/ has its own unittest.js library. All you need to do is include the unittest.js file and an empty <code class="html">div</filter> with a "testlog" HTML ID (defaults). Now you're ready to roll with Test.Unit.Runner.
 
 * Test.Unit.Runner looks quite similar to the standard xUnit family of testing libraries. It has the standard setup and teardown methods and a suite of assertions.
 
@@ -16,7 +16,7 @@ I'm going to write this post live; hopefully it won't just come across as a mish
 
 * It has a basic benchmarking system too!
 
-* Rake integration is provided through a the "javascript_test plugin":http://dev.rubyonrails.org/svn/rails/plugins/javascript_test/ - it allows you to launch browsers and run your javascript unit tests through a single command: <filter:jscode lang="shell">rake test:javascripts</filter>. It uses a WEBrick server and supports multiple browsers, including Camino, Firefox, Safari and Internet Explorer. It's fairly trivial to add support for other browsers too. It seems to be missing the functionality to close the browser after the rake test run. Perhaps the browser definition classes could be extended to support a "close" method that is called after the test run?
+* Rake integration is provided through a the "javascript_test plugin":http://dev.rubyonrails.org/svn/rails/plugins/javascript_test/ - it allows you to launch browsers and run your javascript unit tests through a single command: <pre><code class="shell">rake test:javascripts</filter>. It uses a WEBrick server and supports multiple browsers, including Camino, Firefox, Safari and Internet Explorer. It's fairly trivial to add support for other browsers too. It seems to be missing the functionality to close the browser after the rake test run. Perhaps the browser definition classes could be extended to support a "close" method that is called after the test run?
 
 * The plugin also provides a generator for generating test stub files (HTML format) in test/javascript.
 

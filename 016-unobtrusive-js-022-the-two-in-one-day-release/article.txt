@@ -4,7 +4,7 @@ Unfortunately, it takes really working with a Rails plugin to find problems and 
 
 **Update 21/08/2006**: The latest version of this plugin is 0.3 - please see [this post](http://www.lukeredpath.co.uk/2006/8/21/ujs-rails-plugin-0-3-new-name-new-website) and the [official UJS website](http://www.ujs4rails.com) for more information.
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 def tag_options(opts)
   unless opts[:inline]
     JAVASCRIPT_EVENTS.each do |event|
@@ -18,15 +18,15 @@ def tag_options(opts)
   end
   rails_tag_options(opts)
 end
-</filter:jscode>
+</code></pre>
 
 What it turned out that was happening was that some Rails helpers were adding *empty* onclick handlers to some tags so they were being picked up by the above code. All that was required was a simple fix:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 # get rid of this
 # if opts.include?("on#{event}") 
 # and use this:
 unless opts["on#{event}"].blank?
-</filter:jscode>
+</code></pre>
 
 So [grab Unobtrusive Javascript for Rails 0.2.2](http://opensource.agileevolved.com/svn/root/rails_plugins/unobtrusive_javascript/tags/rel-0.2.2/) while its hot!

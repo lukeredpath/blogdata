@@ -6,14 +6,14 @@ As I mentioned in [my previous article](http://www.lukeredpath.co.uk/index.php/2
 
 Here's a full list of changes and additions:
 
-* UPDATED: <filter:jscode lang="ruby" inline="true">register\_js\_behaviour</filter:jscode> has been renamed to <filter:jscode lang="ruby"  inline="true">apply\_behaviour</filter:jscode> and now takes an optional options hash and a block, which allows you to write your behaviours in pure Ruby. <filter:jscode lang="ruby"  inline="true">register\_js\_behaviour</filter:jscode> remains as an alias for backwards compatibility but is officially deprecated; it will probably be removed in the next release. There are also aliases for the American spelling of behaviour for our friends on the other side of the pond.
-* NEW: You can now attach behaviours directly to elements using <filter:jscode lang="ruby"  inline="true">content\_tag</filter:jscode> and <filter:jscode lang="ruby" inline="true">tag</filter:jscode> by passing in javascript event handlers in the HTML options hash (:onclick, :onmousedown etc.); they'll be extracted to the external behaviours file automatically.
-* UPDATED: The core Rails AJAX/Javascript helpers (<filter:jscode lang="ruby"  inline="true">link\_to\_remote, button\_to\_function, link\_to\_function, form\_remote\_tag</filter:jscode> etc.) now work out of the box.
+* UPDATED: <code class="ruby">register\_js\_behaviour</code></pre> has been renamed to <code class="ruby">apply\_behaviour</code></pre> and now takes an optional options hash and a block, which allows you to write your behaviours in pure Ruby. <code class="ruby">register\_js\_behaviour</code></pre> remains as an alias for backwards compatibility but is officially deprecated; it will probably be removed in the next release. There are also aliases for the American spelling of behaviour for our friends on the other side of the pond.
+* NEW: You can now attach behaviours directly to elements using <code class="ruby">tag</code></pre> by passing in javascript event handlers in the HTML options hash (:onclick, :onmousedown etc.); they'll be extracted to the external behaviours file automatically.
+* UPDATED: The core Rails AJAX/Javascript helpers (<code class="ruby">link\_to\_remote, button\_to\_function, link\_to\_function, form\_remote\_tag</code></pre> etc.) now work out of the box.
 * NEW: There is no need to explicitly specify an HTML ID for the elements you want to attach behaviour to - if you don't, one will be generated automatically for you.
 * NEW: Options to render behaviour rules directly in your page inside script blocks instead of in the external behaviour file.
 * FIXED: Behaviours inside AJAX-loaded partials will now work.
 * UPDATED: event:Selectors and domReady javascript libraries are replaced with the lowPro.js library by Dan Webb
-* UPDATED: Javascript behaviours now have access to a single variable - <filter:jscode lang="ruby" inline="true">event</filter:jscode>. To access the element the behaviour was applied to, use <filter:jscode lang="ruby" inline="true">this</filter:jscode>.
+* UPDATED: Javascript behaviours now have access to a single variable - <code class="ruby">this</code>
 * UPDATED: Behaviours can now cancel the default action by returning false as well as using Event.stop(event). This also works properly in Safari.
 * FIXED: The required javascript files will be copied to your public folder automatically on installation. There is also a rake task for copying files across when upgrading the plugin.
 * NEW: Documentation!
@@ -24,18 +24,18 @@ There is currently only one known issue:
 
 Here's a look at some of the new features, starting with writing behaviours using pure Ruby:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 &lt;% apply_behaviour "#mylink:click" do |page, element|
     page.alert "You clicked me! Now watch me fade..."
     element.visual_effect :fade
   end %&gt;
-</filter:jscode>
+</code></pre>
 
-Attaching behaviours directly to elements with <filter:jscode lang="ruby" inline="true">content\_tag</filter:jscode>:
+Attaching behaviours directly to elements with <code class="ruby">content\_tag</code>
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 &lt;%= content_tag "div", "My funky box", :onclick => "alert('Hello World!')" %&gt;
-</filter:jscode>
+</code></pre>
 
 We want you to really put this release through its paces - does it conflict with other plugins? Does it cause unexpected problems with Rails itself? Are there any other features you'd like to see? The place to report these feature requests and bugs is of course [the Agile Evolved Open Source Trac](http://opensource.agileevolved.com/trac/newticket).
 
@@ -46,24 +46,24 @@ We want you to really put this release through its paces - does it conflict with
 
 **Installation note**: some people have [reported](http://opensource.agileevolved.com/trac/ticket/9) that the plugin fails because the Rails plugin installation script installs the plugin to rel-0.2 instead of unobtrusive\_javascript. This is a failing of Rails' plugin installation system in that it doesn't correctly handle the typical tags/trunk/branches Suvbersion repository layout. If you install the plugin using script/plugin, make sure you rename the rel-0.2 folder to unobtrusive\_javascript. If you are using svn:externals, you can edit your externals file manually:
 
-<filter:jscode lang="shell">
+<pre><code class="shell">
 $ svn propedit svn:externals vendor/plugins
-</filter:jscode>
+</code></pre>
 
 Then add the following line to it:
 
-<filter:jscode lang="shell">
+<pre><code class="shell">
 unobtrusive_javascript http://opensource.agileevolved.com/svn/root/rails_plugins/unobtrusive_javascript/tags/rel-0.2
-</filter:jscode>
+</code></pre>
 
 ## Future Plans
 
-So what do we have planned for 0.3? More patches to Rails' more complicated built-in helpers, such as <filter:jscode lang="ruby" inline="true">observe\_form</filter:jscode> and <filter:jscode lang="ruby" inline="true">observe\_field</filter:jscode> and <filter:jscode lang="ruby" inline="true">periodically\_call\_remote</filter:jscode>. We also have some plans for some new helpers designed especially for <filter:jscode lang="ruby" inline="true">apply\_behaviour</filter:jscode>; how about some of this:
+So what do we have planned for 0.3? More patches to Rails' more complicated built-in helpers, such as <code class="ruby">apply\_behaviour</code> how about some of this:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 &lt;% apply_behaviour "div.draggable", make_draggable %&gt;
 &lt;% apply_behaviour "li.sortable", make_sortable %&gt;
 &lt;% apply_behaviour "#searchbox", make_autocomplete %&gt;
-</filter:jscode>
+</code></pre>
 
 Comments open!

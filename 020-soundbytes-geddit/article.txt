@@ -4,11 +4,11 @@ Just two small little bite-sized nuggets for this edition&hellip;
 
 h3. Automatic stylesheet inclusion with stylesheet_include_tag
 
-First up, <filter:jscode lang="ruby" inline="true">stylesheet_include_tag</filter:jscode> is a small Rails helper that I wrote to help me organise my application stylesheets. I named it _include_tag to distinguish it from Rails' own stylesheet_link_tag.
+First up, <code class="ruby">stylesheet_include_tag</code></pre> is a small Rails helper that I wrote to help me organise my application stylesheets. I named it _include_tag to distinguish it from Rails' own stylesheet_link_tag.
 
 First of all, here's the code:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 def stylesheet_include_tag(*sources)
   if sources.include?(:controller)
     sources.delete(:controller)
@@ -46,13 +46,13 @@ protected
   def stylesheet_exists(source)
     File.exists?(stylesheet_path(source))
   end
-</filter:jscode>
+</code></pre>
 
 So how do you use this little helper? It's quite simple really - it takes three options:
 
-* <filter:jscode lang="ruby" inline="true">:controller</filter:jscode> - looks for a stylesheet under /public/stylesheets called controllername.css - if it finds one, it will automatically include it.
-* <filter:jscode lang="ruby" inline="true">:action</filter:jscode> - as above, except it looks for a stylesheet called controllername_actionname.css
-* <filter:jscode lang="ruby" inline="true">:defaults</filter:jscode> - a combination of the two above options, plus it also looks for a stylesheet called application.css - this is the one that I usually use.
+* <code class="ruby">:controller</code></pre> - looks for a stylesheet under /public/stylesheets called controllername.css - if it finds one, it will automatically include it.
+* <code class="ruby">:action</code></pre> - as above, except it looks for a stylesheet called controllername_actionname.css
+* <code class="ruby">:defaults</code></pre> - a combination of the two above options, plus it also looks for a stylesheet called application.css - this is the one that I usually use.
 
 So what do you gain? Simply, the ability to break apart your stylesheets into sensible chunks (with global styles in application.css) and not having to worry about adding a link tag for every stylesheet you want to use. Simply drop in a stylesheet under /public/stylesheets using the naming conventions above and it will automatically detect it and add a link tag for you.
 
@@ -62,9 +62,9 @@ h3. Comment notification for Mephisto
 
 As you might have read, I recently moved my blog over to Mephisto from Wordpress. I'm loving Mephisto, but one of the features I miss is email notification of new comments. You could just use the RSS feed but some people, including myself, prefer email notifications. Implementing email notifications was pretty trivial - it was just a case of hooking up an observer to the Comment class. I've packaged up the extension as a normal Rails plugin. As I'm using trunk/tags you probably won't have much luck installing it with script/plugin, so use svn co instead:
 
-<filter:jscode lang="shell">
+<pre><code class="shell">
 $ svn co http://opensource.agileevolved.com/svn/root/rails_plugins/mephisto_comment_notification/trunk \
   vendor/plugins/mephisto_comment_notification
-</filter:jscode>
+</code></pre>
 
 Please report any problems with the above plugin on the "Agile Evolved Open Source Trac":http://opensource.agileevolved.com.

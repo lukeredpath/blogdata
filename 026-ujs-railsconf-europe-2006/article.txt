@@ -16,21 +16,21 @@ On a related note, it was great to hear from the guys at "Odeo":http://www.odeo.
 
 There was one other concern relating to the use of links for GET requests only (with no side-effects) and buttons for everything else (POST, PUT and DELETE in REST terms). The concern revolved around the ability to style buttons. Styling buttons can be tricky in some browsers (such as Camino) but this is easily worked around with a bit of clever CSS or use of an image button.
 
-One thing Dan didn't mention in his presentation, which is worth pointing out, is that the UJS plugin upgrades the built-in Rails helpers (<filter:jscode lang="ruby" inline="true">link_to_remote</filter:jscode>, <filter:jscode lang="ruby" inline="true">button_to_function</filter:jscode> et. al) so that they work unobtrusively. This makes it very easy for you to start retrofitting unobtrusive scripting techniques to an existing app, just by installing the UJS plugin. All inline JavaScript is extracted to the external behaviour file and things such as hrefs on links (with <filter:jscode lang="ruby" inline="true">link_to_remote</filter:jscode>) are given the appropriate values.
+One thing Dan didn't mention in his presentation, which is worth pointing out, is that the UJS plugin upgrades the built-in Rails helpers (<code class="ruby">link_to_remote</code> are given the appropriate values.
 
-However, I still want to stress that if you can use the <filter:jscode lang="ruby" inline="true">apply_behaviour</filter:jscode> method, you should. Here's a small example of how <filter:jscode lang="ruby" inline="true">link_to_remote</filter:jscode> can make things a bit funky:
+However, I still want to stress that if you can use the <code class="ruby">link_to_remote</code></pre> can make things a bit funky:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 &lt;% @products.each do |p| %&gt;
   &lt;p&gt;&lt;%= link_to_remote product.description, :controller => 'products', 
                                                 :action => 'description', 
                                                 :id => p.id %&gt;&lt;/p&gt;
 &lt;% end %&gt;
-</filter:jscode>
+</code></pre>
 
-The above will work, but _very_ slowly. That's one behaviour rule for _every_ <filter:jscode lang="html" inline="true">link_to_remote</filter:jscode> in that loop. If you have a significant number of products, things will start crawling to a halt. However, the remote link behaviour can easily be applied to all of the links with a single behaviour and an extra <filter:jscode lang="html" inline="true">div</filter:jscode>:
+The above will work, but _very_ slowly. That's one behaviour rule for _every_ <code class="ruby">div</code>
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 &lt;div id="products"&gt;
 &lt;% @products.each do |p| %&gt;
   &lt;p&gt;&lt;%= link_to product.description,
@@ -41,7 +41,7 @@ The above will work, but _very_ slowly. That's one behaviour rule for _every_ <f
 &lt;/div&gt;
 
 &lt;% apply_behaviour "#products a", make_remote_link %&gt;
-</filter:jscode>
+</code></pre>
 
 One behaviour for any number of products.
 

@@ -2,15 +2,15 @@
 
 What if...you could produce accessible, unobtrusive javascript, using Rails built-in javascript/prototype helpers, with just one extra line of code in your layout, a plugin, and one small enhancement to the helpers? Something like this:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 &lt% form_remote_tag :controller => 'foo', :action => 'bar', :unobtrusive => true %&gt
-</filter:jscode>
+</code></pre>
 
 Which produces:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 &lt;form id="form_foo_bar" action="/foo/bar" method="post"&gt;
-</filter:jscode>
+</code></pre>
 
 But which still acts as an ajax form? You would simply handle the response for ajax and non ajax requests using Rails' responds_to function.
 

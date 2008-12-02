@@ -20,7 +20,7 @@ h3. An alternative approach
 
 My approach was to first attempt some small, fine-grained refactorings on my controllers such as "Extract Method":http://www.refactoring.com/catalog/extractMethod.html to make sure that the REST actions focussed on their core responsibilities and delegated to template methods for specific behaviour. A common example is the create action, which usually looks something like this:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 def create
   @user = User.new(params[:user])
   if @user.save
@@ -34,11 +34,11 @@ def create
 rescue SomeException
   # exception handling here
 end
-</filter:jscode>
+</code></pre>
 
 After extracting functionality to template methods, I ended up with code like this:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 def create
   user = User.new(params[:user])
   if user.save
@@ -65,7 +65,7 @@ protected
   def handle_exception_for user
     # exception handling here
   end
-</filter:jscode>
+</code></pre>
 
 The same approach is taken for other methods and after making this refactoring I am now left with identical RESTful actions across my application. Some might feel that the next step was to "extract a super-class":http://www.refactoring.com/catalog/extractSuperclass.html but there was still some variation that hadn't been eliminated - each controller worked with a different model. I was also somewhat uneasy about using inheritance to eliminate duplication - it is often a good idea to favour composition where possible[1]. However a solution that uses composition is awkward because the object model for Rails controllers is abstracted in the framework. Fortunately Ruby provides us with an alternative that allows us to avoid modifying the inheritance tree in the form of "mixins":http://www.rubycentral.com/book/tut_modules.html. Using include and extend we are able to add functionality to classes and their instances. This is the approach I decided to take but that still left that pesky model variation to deal with.
 
@@ -73,29 +73,29 @@ h3. Refactoring further: extending the DSL
 
 Once again Ruby comes to the rescue with it's excellent meta-programming functionality. We take advantage of that functionality all of the time in Rails when we use it's macro-style class methods; filters and ActiveRecord associations and validations are great examples. Using meta-programming, it was relatively easy to come up with a small DSL for exposing resources with a controller. Here is the first part:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 class UsersController < ApplicationController
   expose_resource :user
 end
-</filter:jscode>
+</code></pre>
 
 As it clearly states, this tells the UsersController that we want to expose our User model. We can use this value throughout whatever code we write to generate each action. The next thing to tackle was how to generate these actions at runtime. I studied the scaffolding code that comes with Rails but wasn't really comfortable with treating code as a template and running it through an eval statement. I decided to take a more object-oriented approach and created a series of "command objects":http://en.wikipedia.org/wiki/Command_pattern to represent each action. This solution was easy to test and extend where necessary.
 
 Finally, there needed to be some way of specifying what actions RESTful actions you want to expose - you might not want all seven. This lead to the second part of the DSL:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 class UsersController < ApplicationController
   expose_resource :user, :except => [:update, :destroy]
 end
-</filter:jscode>
+</code></pre>
 
 Of course, you might only want a few of the actions:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 class UsersController < ApplicationController
   expose_resource :user, :only => [:index, :show]
 end
-</filter:jscode>
+</code></pre>
 
 So where does that leave us? All of the core functionality is in place and all that the developer has to provide is an implementation of the various callback handlers. With some sensible default implementations to these handlers built-in, the developers life is made even easier.
 
@@ -105,9 +105,9 @@ It is worth noting that there isn't a callback handler designed for every situat
 
 All of the code discussed above is available as a Rails plugin that I've called restful_exposure. It can be checked out with Subversion at the following URL:
 
-<filter:jscode lang="shell">
+<pre><code class="shell">
 svn://lukeredpath.co.uk/opensource/plugins/restful_exposure/trunk
-</filter:jscode>
+</code></pre>
 
 A README is bundled and all code is released under the "MIT license":http://www.opensource.org/licenses/mit-license.php.
 
@@ -117,27 +117,27 @@ At present, most of the callback handlers are lacking implementation. This code 
 
 In addition to the above functionality there are a few other features that came about as a direct result of extracting this from our intranet application. The first is the introduction of a parameterized index action. It is common to have some alternative collection actions as well as index - archives, search and recent are good examples. They both retrieve a collection of objects but the number of items retrieved, their order and how they are filtered varies. This variation is encapsulated by the index parameter which is passed into ActiveRecord::Base#find as its options hash. This lets you do things like this:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 def recent
   index :limit => 5
 end
-</filter:jscode>
+</code></pre>
 
 Another thing that it was important to handle was nested resources, representing belongs_to/has_x relationships. One of the impacts this had on the code was in the creation of new objects - the new action had to ensure that the new object created (to be bound to the new form) was linked to its parent object. Getting the parameters for this is made easy by convention and URL parameters made available by nested resource routes so it wasn't a problem to extract. This lead to the first option for expose_resource:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 class FilesController < ApplicationController
   expose_resource :file, :nested_under => :folder
 end
-</filter:jscode>
+</code></pre>
 
 The second option came from the need to link new objects to their parent object when working with tree-like nesting of a single model using acts_as_tree. Support for this is built-in using the as_tree option:
 
-<filter:jscode lang="ruby">
+<pre><code class="ruby">
 class FolderController < ApplicationController
   expose_resource :folder, :as_tree => true
 end
-</filter:jscode>
+</code></pre>
 
 I'm well aware that the Rails community is an opionated one (naturally) and that this might not appeal to some people. Some people might perceive this as "too much magic". Personally I'd disagree - I think this is no more magic here than has_many and acts_as_foo. It has been extracted from a real working application and I think that is important. I have a "3 strikes" rule when it comes to abstractions like this - if I've done the same thing three different times or on three different apps then its time to look for that abstraction and reduce the amount of code that needs maintaining. This "3 strikes"/abstract through extraction approach is exactly the same one that lead to my "crypted_authentication":http://opensource.agileevolved.com/trac/wiki/CryptedAuthentication plugin.
 

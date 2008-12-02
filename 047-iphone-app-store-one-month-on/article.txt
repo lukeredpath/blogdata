@@ -10,9 +10,7 @@ I've tried many RSS feed readers on my Mac but I've always come back to NetNewsW
 
 Downloading feeds over an EDGE or GPRS connection can be painful but since upgrading to the iPhone 3G, it has been a pleasure to use, syncing with my online NewsGator account to retrieve a list of feeds and read/unread data.
 
-A few usability gripes: with a long list of feeds, it can become hard to distinguish between folders and feeds; some kind of visual distinction would be useful. It's also not immediately obvious that you can view articles with the built-in web view by tapping on the article heading (there is a separate button to view in Safari). Both minor gripes however and if you need your constant RSS fix, NetNewsWire should be at the top of your "to buy" list.
-
-"NetNewsWire App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284881860&mt=8
+A few usability gripes: with a long list of feeds, it can become hard to distinguish between folders and feeds; some kind of visual distinction would be useful. It's also not immediately obvious that you can view articles with the built-in web view by tapping on the article heading (there is a separate button to view in Safari). Both minor gripes however and if you need your constant RSS fix, NetNewsWire should be at the top of your "to buy" list. "NetNewsWire App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284881860&mt=8
 
 h3. Texas Hold'em Poker (Apple)
 
@@ -20,33 +18,23 @@ OK, if you don't play poker and your eyes are already glazing over, you might as
 
 The AI isn't exactly brilliant and there will be times where the game is just plain frustrating: you're heads up and you put your opponent all-in with your KQ suited and he/she calls with 10-2 off-suit, only for the flop to come down 10-10-2. It's probably a good thing that this isn't for real money, lest you through your phone out of the nearest window. However, the AI is "good enough" for a fun game of poker and it makes a the daily commute slightly less tedious.
 
-Where this app really shines and makes it so obviously an Apple product is the near-perfect use of the iPhone's touchscreen gesture support to provide an intuitive and fun user interface; cards can be folded by flicking them into the middle of the table; chips and be pushed into into the pot to go all-in; checking is as simple as tapping the table. You can also switch between a virtual-table mode (where you can see the players as the look at their cards and place their bets) and a more traditional racetrack mode (familiar to anybody who has played online poker) by simply changing the phone's orientation.
-
-"Texas Hold'em App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284602850&mt=8
+Where this app really shines and makes it so obviously an Apple product is the near-perfect use of the iPhone's touchscreen gesture support to provide an intuitive and fun user interface; cards can be folded by flicking them into the middle of the table; chips and be pushed into into the pot to go all-in; checking is as simple as tapping the table. You can also switch between a virtual-table mode (where you can see the players as the look at their cards and place their bets) and a more traditional racetrack mode (familiar to anybody who has played online poker) by simply changing the phone's orientation. "Texas Hold'em App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284602850&mt=8
 
 h3. Vicinity
 
-One of the first apps that I've played with that takes real advantage of the location-based services available; after working out your location using triangulation or GPS, it provides you with a list of useful locations in your vicinity (do you see what they've done there?): nearby places, cafes, banks, pubs, supermarkets, taxis, hotels and restaurants. Again, this wasn't very useful on the original iPhone as the cell-tower triangulation was just too slow for it to be usable but on the 3G its incredibly useful. The wikipedia/flickr links are a nice added bonus, especially if you live in a busy area/large city with many points of interest such as London.
-
-"Vicinity App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284496131&mt=8
+One of the first apps that I've played with that takes real advantage of the location-based services available; after working out your location using triangulation or GPS, it provides you with a list of useful locations in your vicinity (do you see what they've done there?): nearby places, cafes, banks, pubs, supermarkets, taxis, hotels and restaurants. Again, this wasn't very useful on the original iPhone as the cell-tower triangulation was just too slow for it to be usable but on the 3G its incredibly useful. The wikipedia/flickr links are a nice added bonus, especially if you live in a busy area/large city with many points of interest such as London. "Vicinity App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284496131&mt=8
 
 h3. Facebook
 
-This native app is a continuation of the good work that the Facebook team have already done with their web app - for my money one of the best web apps available for the iPhone. The native app doesn't offer a whole lot more but it does mean a faster, smoother user experience (e.g., swiping a message in your inbox to reveal a delete button ala Mail) and there is also now a built-in chat option. Unfortunately there still doesn't seem to be a way to edit your profile (other than your status, which I update through twitter anyway).
-
-"Facebook App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284882215&mt=8
+This native app is a continuation of the good work that the Facebook team have already done with their web app - for my money one of the best web apps available for the iPhone. The native app doesn't offer a whole lot more but it does mean a faster, smoother user experience (e.g., swiping a message in your inbox to reveal a delete button ala Mail) and there is also now a built-in chat option. Unfortunately there still doesn't seem to be a way to edit your profile (other than your status, which I update through twitter anyway). "Facebook App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284882215&mt=8
 
 h3. Twitterific
 
-As well as NetNewsWire, Twitterific was another app that I installed straightaway. It's not bad but it doesn't match up to it's desktop counterpart - I find the dark interface quite ugly on the iPhone (there is a light interface in the paid-for version although I can't find a screenshot of this anywhere - is it really too much to ask to have this as an option in the free app too?) and scrolling is very slow and clunky. I don't mind the ads though so I don't really feel compelled to pay for the premium version (the same goes for the desktop version). Despite it's lack of polish, I still think it's the best Twitter client available (at the moment).
-
-"Twitterific App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284540316&mt=8
+As well as NetNewsWire, Twitterific was another app that I installed straightaway. It's not bad but it doesn't match up to it's desktop counterpart - I find the dark interface quite ugly on the iPhone (there is a light interface in the paid-for version although I can't find a screenshot of this anywhere - is it really too much to ask to have this as an option in the free app too?) and scrolling is very slow and clunky. I don't mind the ads though so I don't really feel compelled to pay for the premium version (the same goes for the desktop version). Despite it's lack of polish, I still think it's the best Twitter client available (at the moment). "Twitterific App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284540316&mt=8
 
 h3. Things
 
-I've also grabbed a copy of "Things":http://www.culturedcode.com/things/. The interface is very pretty and I'm sure the app will eventually be great but I still need to motivate myself to use it. One thing I've found lacking is the ability to set alarms/receive reminders for scheduled events although I suspect that is a limitation of the platform itself. You really need to be checking it every morning to get the most out of it (although I suspect that is the idea if you're a GTD addict). There is also no syncing with the desktop version which is a deal-breaker for many (not me) but I'd encourage you to snap it up at the introductory price and wait for syncing which will arrive as a free update.
-
-"Things App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284971781&mt=8
+I've also grabbed a copy of "Things":http://www.culturedcode.com/things/. The interface is very pretty and I'm sure the app will eventually be great but I still need to motivate myself to use it. One thing I've found lacking is the ability to set alarms/receive reminders for scheduled events although I suspect that is a limitation of the platform itself. You really need to be checking it every morning to get the most out of it (although I suspect that is the idea if you're a GTD addict). There is also no syncing with the desktop version which is a deal-breaker for many (not me) but I'd encourage you to snap it up at the introductory price and wait for syncing which will arrive as a free update. "Things App Store link":http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284971781&mt=8
 
 h3. Speaking of updates
 

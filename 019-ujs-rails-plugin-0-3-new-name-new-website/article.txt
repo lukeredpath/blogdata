@@ -5,7 +5,7 @@ The website is the place to go for news, information, release announcements (alt
 Before you rush off to check out the new site, here is a quick overview of some of new features:
 
 * Added out-of-the box caching using HTTP ETags and advanced behaviour caching
-* Added new <code class="ruby">apply_behaviours</code></pre> functionality for applying multiple behaviours at once.
+* Added new @apply_behaviours@</pre> functionality for applying multiple behaviours at once.
 * Added a series of behaviour helpers to make applying Scriptaculous effects unobtrusively easy.
 
 There are also some bug fixes, some refactorings and significantly improved test coverage. For full details, see the announcement on the "UJS website":http://www.ujs4rails.com.

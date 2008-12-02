@@ -4,7 +4,7 @@ This small, simple implementation of the decorator pattern in Ruby sums up what 
 
 I'll borrow a simple example from the excellent "Head First Design Patterns":http://www.oreilly.com/catalog/hfdesignpat/ book by Eric Freeman, Elisabeth Freeman, Kathy Sierra, and Bert Bates.
 
-Let's say you want to calculate the cost of a cup of coffee. You have Coffee class, which implements a <code class="ruby">cost()</code></pre> method. For the purposes of this example, let's just hardcode a value:
+Let's say you want to calculate the cost of a cup of coffee. You have Coffee class, which implements a @cost()@</pre> method. For the purposes of this example, let's just hardcode a value:
 
 bc(ruby).. class Coffee
   def cost
@@ -113,9 +113,9 @@ Coffee.new
 # coffee with milk, whip and sprinkles
 Coffee.with :milk, :whip, :sprinkles
 
-p. The <code class="ruby">self.with</code></pre> method could do with being extracted into a Decoratable module but "here's a concrete implementation":http://pastie.caboo.se/12092. Trevor's method still has an advantage in that it maintains object identity, but I have some ideas to solve that. But alas, it is past 1am and bed beckons.
+p. The @self.with@</pre> method could do with being extracted into a Decoratable module but "here's a concrete implementation":http://pastie.caboo.se/12092. Trevor's method still has an advantage in that it maintains object identity, but I have some ideas to solve that. But alas, it is past 1am and bed beckons.
 
-*Update 3*: Trevor fights back with "his own self.with() implementation":http://pastie.caboo.se/12097. Personally I prefer the <code class="ruby">extend</code></pre> implementation, it eliminates the symbol to class trickery, and still maintains identity. His 'fu is still strong.
+*Update 3*: Trevor fights back with "his own self.with() implementation":http://pastie.caboo.se/12097. Personally I prefer the @extend@</pre> implementation, it eliminates the symbol to class trickery, and still maintains identity. His 'fu is still strong.
 
 However, there is one downside to Trevor's method: you can only apply a decorator to an object using <filterjscode lang="ruby" inline="true">extend</code></pre> once. But what if you wanted double sprinkles?
 

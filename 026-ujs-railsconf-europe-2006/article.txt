@@ -18,7 +18,7 @@ There was one other concern relating to the use of links for GET requests only (
 
 One thing Dan didn't mention in his presentation, which is worth pointing out, is that the UJS plugin upgrades the built-in Rails helpers (<code class="ruby">link_to_remote</code> are given the appropriate values.
 
-However, I still want to stress that if you can use the <code class="ruby">link_to_remote</code></pre> can make things a bit funky:
+However, I still want to stress that if you can use the @link_to_remote@</pre> can make things a bit funky:
 
 bc(ruby).. &lt;% @products.each do |p| %&gt;
   &lt;p&gt;&lt;%= link_to_remote product.description, :controller => 'products', 
@@ -26,7 +26,7 @@ bc(ruby).. &lt;% @products.each do |p| %&gt;
                                                 :id => p.id %&gt;&lt;/p&gt;
 &lt;% end %&gt;
 
-p. The above will work, but _very_ slowly. That's one behaviour rule for _every_ <code class="ruby">div</code>
+p. The above will work, but _very_ slowly. That's one behaviour rule for _every_ @div@
 
 bc(ruby).. &lt;div id="products"&gt;
 &lt;% @products.each do |p| %&gt;

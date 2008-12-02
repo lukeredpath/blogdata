@@ -6,14 +6,14 @@ As I mentioned in [my previous article](http://www.lukeredpath.co.uk/index.php/2
 
 Here's a full list of changes and additions:
 
-* UPDATED: <code class="ruby">register\_js\_behaviour</code></pre> has been renamed to <code class="ruby">apply\_behaviour</code></pre> and now takes an optional options hash and a block, which allows you to write your behaviours in pure Ruby. <code class="ruby">register\_js\_behaviour</code></pre> remains as an alias for backwards compatibility but is officially deprecated; it will probably be removed in the next release. There are also aliases for the American spelling of behaviour for our friends on the other side of the pond.
-* NEW: You can now attach behaviours directly to elements using <code class="ruby">tag</code></pre> by passing in javascript event handlers in the HTML options hash (:onclick, :onmousedown etc.); they'll be extracted to the external behaviours file automatically.
+* UPDATED: @register\_js\_behaviour@</pre> remains as an alias for backwards compatibility but is officially deprecated; it will probably be removed in the next release. There are also aliases for the American spelling of behaviour for our friends on the other side of the pond.
+* NEW: You can now attach behaviours directly to elements using @tag@</pre> by passing in javascript event handlers in the HTML options hash (:onclick, :onmousedown etc.); they'll be extracted to the external behaviours file automatically.
 * UPDATED: The core Rails AJAX/Javascript helpers (<code class="ruby">link\_to\_remote, button\_to\_function, link\_to\_function, form\_remote\_tag</code></pre> etc.) now work out of the box.
 * NEW: There is no need to explicitly specify an HTML ID for the elements you want to attach behaviour to - if you don't, one will be generated automatically for you.
 * NEW: Options to render behaviour rules directly in your page inside script blocks instead of in the external behaviour file.
 * FIXED: Behaviours inside AJAX-loaded partials will now work.
 * UPDATED: event:Selectors and domReady javascript libraries are replaced with the lowPro.js library by Dan Webb
-* UPDATED: Javascript behaviours now have access to a single variable - <code class="ruby">this</code>
+* UPDATED: Javascript behaviours now have access to a single variable - @this@
 * UPDATED: Behaviours can now cancel the default action by returning false as well as using Event.stop(event). This also works properly in Safari.
 * FIXED: The required javascript files will be copied to your public folder automatically on installation. There is also a rake task for copying files across when upgrading the plugin.
 * NEW: Documentation!
@@ -29,7 +29,7 @@ bc(ruby).. &lt;% apply_behaviour "#mylink:click" do |page, element|
     element.visual_effect :fade
   end %&gt;
 
-p. Attaching behaviours directly to elements with <code class="ruby">content\_tag</code>
+p. Attaching behaviours directly to elements with @content\_tag@
 
 bc(ruby).. &lt;%= content_tag "div", "My funky box", :onclick => "alert('Hello World!')" %&gt;
 
@@ -51,7 +51,7 @@ bc(shell).. unobtrusive_javascript http://opensource.agileevolved.com/svn/root/r
 
 ## Future Plans
 
-So what do we have planned for 0.3? More patches to Rails' more complicated built-in helpers, such as <code class="ruby">apply\_behaviour</code> how about some of this:
+So what do we have planned for 0.3? More patches to Rails' more complicated built-in helpers, such as @apply\_behaviour@ how about some of this:
 
 bc(ruby).. &lt;% apply_behaviour "div.draggable", make_draggable %&gt;
 &lt;% apply_behaviour "li.sortable", make_sortable %&gt;

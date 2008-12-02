@@ -46,7 +46,7 @@ spec = SizeSpecification.new(6, :username)
 spec.satisfied_by? user
 #=> false
 
-On the face of it, this offers nothing different to using <code class="ruby">validates_size_of :user, :is => 6</code> On their own, these low-level Specifications offer little, except for an alternative implementation of the built-in ActiveRecord validations. Its when you start combining them with other low-level specifications, as well as your own custom specification objects, to create more complex specifications that their power becomes more obvious.
+On the face of it, this offers nothing different to using @validates_size_of :user, :is => 6@ On their own, these low-level Specifications offer little, except for an alternative implementation of the built-in ActiveRecord validations. Its when you start combining them with other low-level specifications, as well as your own custom specification objects, to create more complex specifications that their power becomes more obvious.
 
 h3. Composite specifications
 
@@ -61,7 +61,7 @@ spec.satisfied_by?(User.new)
 
 Of course, because a CompositeSpecification and a single Specification share the same interface, there is no reason why you can't add composite specifications to other composite specifications.
 
-Finally, ActiveSpec provides two low-level convenience classes. The first is a decorator called NotSpecification. You can use this to reverse the result of a specification (i.e. if a specification returns true, then it will return false when wrapped in a NotSpecification decorator). One potential application of this is in the implementation of both <code class="ruby">validates_exclusion_of</code></pre> using the CollectionSpecification:
+Finally, ActiveSpec provides two low-level convenience classes. The first is a decorator called NotSpecification. You can use this to reverse the result of a specification (i.e. if a specification returns true, then it will return false when wrapped in a NotSpecification decorator). One potential application of this is in the implementation of both @validates_exclusion_of@</pre> using the CollectionSpecification:
 
 bc(ruby).. spec = CollectionSpecification.new(1..10, :age)
 # or validates_inclusion_of :age, :in => 1..10
@@ -90,7 +90,7 @@ end
 
 UserSpecification.satisfied_by?(some_user)
 
-p. For every built-in low-level specification, there is an equivalent <code class="ruby">must_satisfy</code> You can also pass in a block to must_satisfy and it will automatically be converted into a ProcSpecification.
+p. For every built-in low-level specification, there is an equivalent @must_satisfy@ You can also pass in a block to must_satisfy and it will automatically be converted into a ProcSpecification.
 	
 bc(ruby). class AdvancedUserSpecification < ActiveSpec::Base
   must_satisfy :valid_user_specification
@@ -99,7 +99,7 @@ bc(ruby). class AdvancedUserSpecification < ActiveSpec::Base
 	end
 end
 
-p. Finally, the ActiveSpec::Context module defines a <code class="ruby">specification</code></pre> method will be made available in the global namespace. Using it couldn't be simpler:
+p. Finally, the ActiveSpec::Context module defines a @specification@</pre> method will be made available in the global namespace. Using it couldn't be simpler:
 
 bc(ruby).. specification :valid_user do
   requires_presence_of :username, :password
@@ -113,7 +113,7 @@ p. As you can see from the above example, all of the macros available in ActiveS
 
 h3. Using the Satisfies mixin for easy integration
 
-The final piece of the ActiveSpec puzzle is the ActiveSpec::Satisfies mixin which makes it possible to attach specifications directly to a class. Whilst this increases coupling, there are times when you always want a class to pass one or more specifications and manually passing objects into specification objects can get quite tedious. The ActiveSpec::Satisfies mixin adds two new methods to your class - a class method called <code class="ruby">satisfies_specs?</code> If the use isn't obvious, allow me to demonstrate:
+The final piece of the ActiveSpec puzzle is the ActiveSpec::Satisfies mixin which makes it possible to attach specifications directly to a class. Whilst this increases coupling, there are times when you always want a class to pass one or more specifications and manually passing objects into specification objects can get quite tedious. The ActiveSpec::Satisfies mixin adds two new methods to your class - a class method called @satisfies_specs?@ If the use isn't obvious, allow me to demonstrate:
 
 bc(ruby).. class User
   must_satisfy :valid_user_specification

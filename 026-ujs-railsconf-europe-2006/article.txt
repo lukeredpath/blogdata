@@ -1,0 +1,52 @@
+There has been a tremendous amount of interest at RailsConf Europe in the "UJS Rails Plugin":http://www.ujs4rails.com. "Dan":http://www.danwebb.net gave his talk on Thursday morning and it was a struggle to get in; it was completely oversubscribed (I had to use the old 'but I'm the co-author!' line just to get in). It was great to see the interest it had generated. The talk proved so popular that a second presentation was scheduled on the Friday in the main congress hall which again proved really popular; we managed to fill up most of the room despite it being lunch - not a bad achievement.
+
+Dan gave a great presentation that went into the full details of the whys and wheres of unobtrusive scripting before giving a run down of the core UJS features, wrapping up with a small case study: building an AJAX-powered shopping cart using UJS. He showed how to build the shopping cart so it works in a traditional manner without JavaScript and then he used UJS to layer the additional behaviour on top of that.
+
+<img src="/assets/2006/9/15/dan-ujs-railsconf-mainhall.jpg" alt="RailsConf Photo" title="Dan presenting UJS at RailsConf Europe 2006" />
+
+Some people brought up some interesting questions at the end of the talk, some of which I'd like to address.
+
+One person asked if there were any major drawbacks to working this way. In general, I think you'll find that once you have got into the right mindset, you will find yourself always thinking about how things will work with and without JavaScript. Its important to stress that it *is* a mindset change, as Dan pointed out in his presentation. It took some time to convince people of the advantages of CSS-powered layouts and I have a feeling that it might take some time with unobtrusive scripting but I think we'll get there eventually.
+
+Somebody questioned whether or not this approach will work when you trying to create a web-based application that mimcs a desktop application; he cited something like Google Spreadsheets or Google Maps. I think in situations like this it could be difficult to use UJS, simply because creating a fallback would be difficult. You'd also have to question the usefulness of an application like a spreadsheet that didn't work without JavaScript - how _usable_ would it be? Campfire is another example of where the AJAX functionality is integral to the way in which it works.
+
+Google Maps on the other hand could easily be made unobtrusive. Think about it: how did web-based mapping apps work before AJAX came along? They presented a static map with arrows on each side for moving across the map. It is slow, but it works. There is no reason why Google Maps can't fall back on this behaviour in the absence of JavaScript. 
+
+On a related note, it was great to hear from the guys at "Odeo":http://www.odeo.com and that they really liked the UJS plugin. They mentioned that most of Odeo is unobtrusive and they had to roll a lot of their own JavaScript helpers and raw JavaScript to achieve this. If Odeo start using UJS, that would just be awesome.
+
+There was one other concern relating to the use of links for GET requests only (with no side-effects) and buttons for everything else (POST, PUT and DELETE in REST terms). The concern revolved around the ability to style buttons. Styling buttons can be tricky in some browsers (such as Camino) but this is easily worked around with a bit of clever CSS or use of an image button.
+
+One thing Dan didn't mention in his presentation, which is worth pointing out, is that the UJS plugin upgrades the built-in Rails helpers (<filter:jscode lang="ruby" inline="true">link_to_remote</filter:jscode>, <filter:jscode lang="ruby" inline="true">button_to_function</filter:jscode> et. al) so that they work unobtrusively. This makes it very easy for you to start retrofitting unobtrusive scripting techniques to an existing app, just by installing the UJS plugin. All inline JavaScript is extracted to the external behaviour file and things such as hrefs on links (with <filter:jscode lang="ruby" inline="true">link_to_remote</filter:jscode>) are given the appropriate values.
+
+However, I still want to stress that if you can use the <filter:jscode lang="ruby" inline="true">apply_behaviour</filter:jscode> method, you should. Here's a small example of how <filter:jscode lang="ruby" inline="true">link_to_remote</filter:jscode> can make things a bit funky:
+
+<filter:jscode lang="ruby">
+&lt;% @products.each do |p| %&gt;
+  &lt;p&gt;&lt;%= link_to_remote product.description, :controller => 'products', 
+                                                :action => 'description', 
+                                                :id => p.id %&gt;&lt;/p&gt;
+&lt;% end %&gt;
+</filter:jscode>
+
+The above will work, but _very_ slowly. That's one behaviour rule for _every_ <filter:jscode lang="html" inline="true">link_to_remote</filter:jscode> in that loop. If you have a significant number of products, things will start crawling to a halt. However, the remote link behaviour can easily be applied to all of the links with a single behaviour and an extra <filter:jscode lang="html" inline="true">div</filter:jscode>:
+
+<filter:jscode lang="ruby">
+&lt;div id="products"&gt;
+&lt;% @products.each do |p| %&gt;
+  &lt;p&gt;&lt;%= link_to product.description,
+           :controller => 'products',
+           :action => 'description', 
+           :id => p.id %&gt;&lt;/p&gt;
+&lt;% end %&gt;
+&lt;/div&gt;
+
+&lt;% apply_behaviour "#products a", make_remote_link %&gt;
+</filter:jscode>
+
+One behaviour for any number of products.
+
+If you haven't tried UJS yet, do give it a go. "www.ujs4rails.com":http://www.ujs4rails.com is the official website, and it contains documentation, tips, tricks, a quick start guide and things such as rdocs and a Trac for filing tickets.
+
+If you like to live on the edge, feel free to try running on the trunk - we have some cool new ideas on the way for 0.4 and 0.5, including custom assertions for Test::Unit for asserting behaviour (and some extensions for RSpec too!) and a cool in-browser debugger that will let you do things such as view elements with behaviour applied and what behaviours are applied to those elements. Combined with "FireBug":https://addons.mozilla.org/firefox/1843/ and Thomas Fuchs' unittest.js library ("see my article on his RailsConf talk":http://lukeredpath.co.uk/2006/9/14/thomas-fuchs-adventures-in-javascript-testing), that should make a pretty awesome testing environment for your AJAX apps.
+
+Have fun with UJS. All feedback is welcome, especially if you have some ideas that you think would make UJS even cooler.

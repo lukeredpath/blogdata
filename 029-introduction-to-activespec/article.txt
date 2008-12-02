@@ -1,0 +1,181 @@
+As I mentioned in a previous article, during my downtime last week I have been working on a Ruby library called ActiveSpec. Other than a quiet announcement on the Rails mailing list (and an accidental one on the Rails core list) little has been said about it, until now.
+
+h3. Specifications
+
+Not to be confused with the kind of specifications we talk about when using the RSpec BDD framework, the Specification design and analysis pattern can form a part of your core domain model. The easiest way of describing a specification is a collection of rules. Objects can be evaluated against the rules of a specification and should all of those rules be met, the specification is satisfied. The Specification pattern can be used to decouple those rules from your core domain objects. This can be especially useful when the evaluation of a series of business rules depends on several domain objects at one time.
+
+The Specification pattern borrows from logic-programming and the concept of predicates - a specification object is a an object that essentially evaluates to a boolean. Different specification objects can then be combined to create more complex specifications (a composite). Domain Driven Design, by Eric Evans, concisely summarizes this as follows:
+
+bq. &#8220;Create explicit predicate-like VALUE OBJECTS for specialised purposes. A SPECIFICATION IS A PREDICATE that determines if an object does or does not satisfy some criteria.&#8221;
+
+There are three main uses of the Specification pattern:
+
+ # Validation
+ # Selection
+ # Creation (build-to-order)
+
+The simplest of these is validation and that is what the initial release of ActiveSpec focuses on.
+
+h3. What is ActiveSpec?
+
+ActiveSpec is a Ruby implementation of the Specification pattern. At the lowest level, it provides a series of generic Specifications that will be familiar to anybody who has used Rails validation macros. It also provides a way of creating composite specifications in a more declarative manager and on top of that, a simple DSL that can be used for easily defining specifications. Finally, it makes it easy to declaratively link your own classes to specifications depending on context.
+
+h3. Where would you use it?
+
+As I mentioned before, one of the main uses of the Specification is for validation. More specifically, it can be used for evaluating objects, or a combination of objects against a series of complex business rules. Validation was the initial motivation for creating ActiveSpec and it was designed as an accompaniment - not a replacement - for ActiveRecord's built-in validation macros. Furthermore, ActiveSpec is not limited to use with ActiveRecord or indeed, Rails. It can be used with *any* Ruby object.
+
+ActiveRecord's validation macros make it easy to declaratively add data validation to your model objects. A lot of the time these are enough and for basic validation (such as size constraints) they work well. On a recent project, with a particularly complex domain model, there was the need to validate objects in different ways, depending on its state and relationship with other objects. We found there was a lot of pushback as we tried to bend ActiveRecord validations to apply the complex business rules needed. We managed it, but the resulting code wasn't pretty and certainly not the elegant, clear code you would come to expect from a Ruby or Rails application. In retrospect, the Specification pattern would have been an ideal solution.
+
+h3. Getting started with ActiveSpec
+
+Before we can do anything, we need to install ActiveSpec. This can be done easily using RubyGems.
+
+<filter:jscode lang="shell">
+$ gem install activespec
+</filter:jscode>
+
+We'll start by taking a look at the ActiveSpec::Specifications module. This module contains low-level, generic Specifications, that match a lot of the functionality provided by ActiveRecord's validation macros. These include:
+
+  * CollectionSpecification (validates_inclusion_of and validates_exclusion_of)
+  * ConfirmationSpecification (validates_confirmation_of)
+  * PresenceSpecification (validates_presence_of)
+  * SizeSpecification (validates_size_of)
+
+All specifications in ActiveSpec conform to the same, simple one-method interface, <filter:jscode lang="ruby" inline="true">satisfied_by?</filter:jscode>. In addition, all of the above Specifications can be used against multiple attributes of an object, in a similar way to the ActiveRecord validations macros. Here's SizeSpecification in action:
+	
+<filter:jscode lang="ruby">
+user = User.new(:username => 'luke')
+spec = SizeSpecification.new(6, :username)
+spec.satisfied_by? user
+#=> false
+</filter:jscode>
+
+On the face of it, this offers nothing different to using <filter:jscode lang="ruby" inline="true">validates_size_of :user, :is => 6</filter:jscode>. On their own, these low-level Specifications offer little, except for an alternative implementation of the built-in ActiveRecord validations. Its when you start combining them with other low-level specifications, as well as your own custom specification objects, to create more complex specifications that their power becomes more obvious.
+	
+h3. Composite specifications
+	
+To aid in the creation of composite specifications (a collection of specifications that can be treated as an individual specification due to a matching interface), ActiveSpec provides a CompositeSpecification class:
+	
+<filter:jscode lang="ruby">
+spec = CompositeSpecification.new
+spec.add_specification(SizeSpecification.new(6, :username))
+spec.add_specification(CollectionSpecification.new(18..30, :age))
+spec.add_specification(ConfirmationSpecification.new(:password))
+spec.satisfied_by?(User.new)
+#=> false
+</filter:jscode>
+
+Of course, because a CompositeSpecification and a single Specification share the same interface, there is no reason why you can't add composite specifications to other composite specifications.
+
+Finally, ActiveSpec provides two low-level convenience classes. The first is a decorator called NotSpecification. You can use this to reverse the result of a specification (i.e. if a specification returns true, then it will return false when wrapped in a NotSpecification decorator). One potential application of this is in the implementation of both <filter:jscode lang="ruby" inline="true">validates_inclusion_of</filter:jscode> and <filter:jscode lang="ruby" inline="true">validates_exclusion_of</filter:jscode> using the CollectionSpecification:
+	
+<filter:jscode lang="ruby">
+spec = CollectionSpecification.new(1..10, :age)
+# or validates_inclusion_of :age, :in => 1..10
+
+spec_two = NotSpecification.new(CollectionSpecification.new(1..10, :age))
+# or validates_exclusion_of :age, :in => 1..10
+</filter:jscode>
+
+The second convenience is a simple adapter that can be used to wrap around Proc objects to make them conform to the specification interface. This makes it possible to use Procs as ad-hoc specifications:
+
+<filter:jscode lang="ruby">
+spec = ProcSpecification.new(proc{ |object|
+	# do something with object
+	# and return true or false
+})
+spec.satisfied_by? some_object
+</filter:jscode>
+
+h3. Taking things further with ActiveSpec::Base
+
+So far we've demonstrated some of the built-in ActiveSpec generic specifications can be used in place of ActiveRecord validations and how they can be combined to create more complicated specifications. Whilst this forms the core of ActiveSpec's functionality, using these low-level specifications directly isn't very elegant. ActiveSpec::Base allows you to construct composite specifications in a much more declarative manner that will feel a lot more comfortable for those used to ActiveRecord validations. All you need to do is inherit from ActiveSpec::Base.
+
+<filter:jscode lang="ruby">
+class UserSpecification < ActiveSpec::Base
+	requires_presence_of :username, :password
+	requires_size 6, :password
+	requires_confirmation_of :password
+	requires_inclusion_in 18..30, :age
+end
+
+UserSpecification.satisfied_by?(some_user)
+</filter:jscode>
+
+For every built-in low-level specification, there is an equivalent <filter:jscode lang="ruby" inline="true">requires_*</filter:jscode> macro. For building more complex specifications using other composite specs or your own specification objects, you can use <filter:jscode lang="ruby" inline="true">must_satisfy</filter:jscode>. You can also pass in a block to must_satisfy and it will automatically be converted into a ProcSpecification.
+	
+<filter:jscode lang="ruby">
+class AdvancedUserSpecification < ActiveSpec::Base
+  must_satisfy :valid_user_specification
+  must_satisfy do |user|
+		# do something with user
+	end
+end
+</filter:jscode>
+
+Finally, the ActiveSpec::Context module defines a <filter:jscode lang="ruby" inline="true">specification</filter:jscode> method which forms the basis of a DSL for creating specifications. You can use this instead of inheriting from ActiveSpec::Base. Whenever you require ActiveSpec in your application, the <filter:jscode lang="ruby" inline="true">specification</filter:jscode> method will be made available in the global namespace. Using it couldn't be simpler:
+	
+<filter:jscode lang="ruby">
+specification :valid_user do
+  requires_presence_of :username, :password
+  requires_confirmation_of :password
+  must_satisfy :another_specification
+end
+
+ValidUserSpecification.satisfied_by?(some_user)
+</filter:jscode>
+
+As you can see from the above example, all of the macros available in ActiveSpec::Base are available to the DSL. The DSL will automatically create a specification class that inherits from ActiveSpec::Base which can then be used in the same way as your other specifications.
+
+h3. Using the Satisfies mixin for easy integration
+
+The final piece of the ActiveSpec puzzle is the ActiveSpec::Satisfies mixin which makes it possible to attach specifications directly to a class. Whilst this increases coupling, there are times when you always want a class to pass one or more specifications and manually passing objects into specification objects can get quite tedious. The ActiveSpec::Satisfies mixin adds two new methods to your class - a class method called <filter:jscode lang="ruby" inline="true">must_satisfy</filter:jscode> and an instance method called <filter:jscode lang="ruby" inline="true">satisfies_specs?</filter:jscode>. If the use isn't obvious, allow me to demonstrate:
+	
+<filter:jscode lang="ruby">
+class User
+  must_satisfy :valid_user_specification
+
+  # optional :if argument takes a symbol or a block
+  # and can be used for conditional evaluation of
+  # specifications
+  must_satisfy :activated_user_specification, :if => :activated?
+end
+
+user = User.new
+user.satisfies_specs?
+# evaluates ValidUserSpecification
+user.activated = true
+user.satisfies_specs?
+# evaluates both specifications
+</filter:jscode>
+
+If you want to use this functionality in your Rails models, add this to your environment.rb file:
+
+<filter:jscode lang="ruby">
+require 'active_spec'
+ActiveRecord::Base.send(:include, ActiveSpec::Satisfies)
+</filter:jscode>
+
+There are plans to make ActiveRecord integration easier in the future with the use of a Rails plugin.
+
+h3. Give it a try!
+
+ActiveSpec is still in its early stages - its only at version 0.1. The next release will focus on improvements to the existing code and tackling the second use of specifications for selection. Work on this is still in its early stages, but here is a small teaser:
+
+<filter:jscode lang="ruby">
+# pure ruby selection
+User.find_by_specification(SomeAdvancedUserSpecification)
+
+# specifications for SQL queries?
+User.find(:all, :conditions => SomeAdvancedUserSpecification.to_sql)
+</filter:jscode>
+
+If you have some cool ideas for ActiveSpec, or feedback on any of the above, please let me know.
+
+h3. Further information
+
+  * "ActiveSpec Rubyforge Homepage":http://activespec.rubyforge.org
+  * "ActiveSpec API Documentation":http://docs.britsonrails.org.uk/activespec/
+  * "Martin Fowler Specification Article":http://www.martinfowler.com/apsupp/spec.pdf#search=%22martin%20fowler%20specification%22
+  * "Domain Driven Design book by Eric Evans":http://domaindrivendesign.org/book/
+  * "Carlos Gabaldon looks at integrating ActiveSpec with Rails":http://www.blog.notesonrails.com/articles/2006/09/27/more-on-activespec

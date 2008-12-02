@@ -1,0 +1,21 @@
+I started my last blog entry with the sentence: "It's been a while since I blogged". To use the same sentence to begin this entry would be somewhat of an understatement. Its been six months today since my last post. 
+
+There are various reasons for this but the main one would be lack of motivation. Whilst working at Coherent I managed to lose touch with the Ruby/Rails community; I didn't make it to any "LRUG":http://lrug.org meetings, I wrote precious little code outside of work and my enthusiasm just disappeared. This was partly due to me being the only developer at Coherent and partly down to me just burning out towards the beginning of the year.
+
+However, things have changed somewhat over the past few months. I have left Coherent and I am now a member of the great team at "Reevoo":http://www.reevoo.com. Since starting at Reevoo, I have regained some of my enthusiasm and have now finally found the time to post something here. I even made it to LRUG last month.
+
+Allow me to give you a brief update on some of the projects that I have been involved in:
+
+* RSpec article part two: unfortunately this has just been far too long coming. RSpec has changed a fair bit (for the better) since that article and is now quite out of date. There are plenty of other great developers out there writing about RSpec as well now. What I intend to do is revisit my original article and update it to reflect the latest version of RSpec. And while there will not be a "part two" per se, I do intend to write about RSpec more in the future.
+
+* "UJS":http://www.ujs4rails.com - the UJS project has come to a grinding halt over the past six months for several reasons on both mine and "Dan's":http://www.danwebb.net part. We are still undecided on where to go with the project at this point but it is unlikely that development will continue on the plugin unless somebody else volunteers to take over the project. Read "this entry on Dan's website":http://www.danwebb.net/2007/6/16/the-state-and-future-of-the-ujs-plugin for more information.
+
+* Refactoring REST - the subject of my last blog entry; I still have this code lying around and whilst I haven't had much of a chance to explore it further I still intend on developing this, time permitting.
+
+* Rails Plugin Repository - work on this, too, has unfortunately come to a halt. I still speak to "James Adam":http://lazyatom.com who just so happens to be joining us here at Reevoo in the coming weeks. So maybe this will be resurrected, or maybe it won't. 
+
+So to the future...things are going great here at Reevoo - we've just launched "a brand new version of Reevoo":http://www.reevoo.com. Be sure to check it out. We have some other exicting developments in the works too.
+
+Because I don't always have the time to post full-length blog posts I set up a "tumbelog":http://en.wikipedia.org/wiki/Tumblelog some time ago which I never got around to using (I didn't even publicise it). However I plan to start posting to it frequently from now on, so "add it to your bookmarks/news reader feeds":http://tumble.lukeredpath.co.uk/.
+
+Finally, I will be attending "RailsConf Europe 2007": along with my Reevoo colleagues "Paul":http://po-ru.com/ and "Ben":http://everythingbehind.com/ruby/. I look forward to seeing you all in Berlin.

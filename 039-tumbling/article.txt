@@ -1,0 +1,12 @@
+Since I started blogging again a few months ago, I thought it would be a good idea to set up a tumblelog (courtesy of "tumblr":http://tumblr.com) to encourage me to post more frequently without having to spend time writing full-length blog entries.
+
+In case you missed new navigation bar along the top of this blog (or you are reading this in your newsreader), then you can access "my tumblelog here":http://tumble.lukeredpath.co.uk.
+
+Besides the obligatory tumblelog fare (quotes, chat excerpts and so on) I tend to post any useful, interesting or plain esoteric code snippets that I have written or come across, so please do check it out. You can also "subscribe to the feed":http://feeds.feedburner.com/tumble-lukeredpath.
+
+Here are some recent snippets:
+
+ * "Timeout on any Ruby method":http://tumble.lukeredpath.co.uk/post/12847007
+ * "More sneaky #to_proc tricks":http://tumble.lukeredpath.co.uk/post/11530172
+
+On an unrelated note, I did attend RailsConf Europe last week but have yet to finish my write-up. To everybody I got the chance to talk to while I was out in Berlin, it was good catching up and enjoy numerous beers. I have to say thanks to my employers, "Reevoo":http://www.reevoo.com for financing the trip. There were some interesting talks and I enjoyed myself overall but unfortunately were also some disappointments - more on that in my full write-up.

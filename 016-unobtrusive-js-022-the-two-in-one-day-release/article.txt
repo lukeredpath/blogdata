@@ -1,6 +1,6 @@
-Iâ€™m sure many people are aware of the risks in running pre-1.0 software/plugins and that there are likely to be many bugs discovered until that 1.0 release finally hits (and beyond).
+I'm sure many people are aware of the risks in running pre-1.0 software/plugins and that there are likely to be many bugs discovered until that 1.0 release finally hits (and beyond).
 
-Unfortunately, it takes really working with a Rails plugin to find problems and I have been doing so today. I encountered a strange error where the plugin was generating IDs for elements that shouldnâ€™t have any javascript events attached.
+Unfortunately, it takes really working with a Rails plugin to find problems and I have been doing so today. I encountered a strange error where the plugin was generating IDs for elements that shouldn't have any javascript events attached.
 
 **Update 21/08/2006**: The latest version of this plugin is 0.3 - please see [this post](http://www.lukeredpath.co.uk/2006/8/21/ujs-rails-plugin-0-3-new-name-new-website) and the [official UJS website](http://www.ujs4rails.com) for more information.
 

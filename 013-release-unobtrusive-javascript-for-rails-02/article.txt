@@ -24,14 +24,14 @@ There is currently only one known issue:
 
 Here's a look at some of the new features, starting with writing behaviours using pure Ruby:
 
-bc(ruby).. &lt;% apply_behaviour "#mylink:click" do |page, element|
+bc(ruby).. <% apply_behaviour "#mylink:click" do |page, element|
     page.alert "You clicked me! Now watch me fade..."
     element.visual_effect :fade
-  end %&gt;
+  end %>
 
 p. Attaching behaviours directly to elements with @content\_tag@
 
-bc(ruby).. &lt;%= content_tag "div", "My funky box", :onclick => "alert('Hello World!')" %&gt;
+bc(ruby).. <%= content_tag "div", "My funky box", :onclick => "alert('Hello World!')" %>
 
 p. We want you to really put this release through its paces - does it conflict with other plugins? Does it cause unexpected problems with Rails itself? Are there any other features you'd like to see? The place to report these feature requests and bugs is of course [the Agile Evolved Open Source Trac](http://opensource.agileevolved.com/trac/newticket).
 
@@ -53,8 +53,8 @@ bc(shell).. unobtrusive_javascript http://opensource.agileevolved.com/svn/root/r
 
 So what do we have planned for 0.3? More patches to Rails' more complicated built-in helpers, such as @apply\_behaviour@ how about some of this:
 
-bc(ruby).. &lt;% apply_behaviour "div.draggable", make_draggable %&gt;
-&lt;% apply_behaviour "li.sortable", make_sortable %&gt;
-&lt;% apply_behaviour "#searchbox", make_autocomplete %&gt;
+bc(ruby).. <% apply_behaviour "div.draggable", make_draggable %>
+<% apply_behaviour "li.sortable", make_sortable %>
+<% apply_behaviour "#searchbox", make_autocomplete %>
 
 p. Comments open!

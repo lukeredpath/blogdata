@@ -6,7 +6,7 @@ bc(ruby).. &lt% form_remote_tag :controller => 'foo', :action => 'bar', :unobtru
 
 p. Which produces:
 
-bc(ruby).. &lt;form id="form_foo_bar" action="/foo/bar" method="post"&gt;
+bc(ruby).. <form id="form_foo_bar" action="/foo/bar" method="post">
 
 p. But which still acts as an ajax form? You would simply handle the response for ajax and non ajax requests using Rails' responds_to function.
 

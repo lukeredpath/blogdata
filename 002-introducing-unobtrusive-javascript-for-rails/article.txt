@@ -21,11 +21,11 @@ bc(ruby).. &lt%= javascript_include_tag :defaults %&gt;
 
 p. You can now attach events to elements in your page from either your controller or your view, using the register\_js\_behaviour() function. The function takes two parameters; the first is the CSS selector and event (for more details see the [event:Selectors documentation](http://encytemedia.com/event-selectors/)) to attach your behaviour to and the second is a string of Javascript that you want to execute. Here's a small example:
 
-bc(ruby).. &lt;% register_js_behaviour "#my_funky_link:click", "alert('Hello World')" %&gt;
+bc(ruby).. <% register_js_behaviour "#my_funky_link:click", "alert('Hello World')" %&gt;
 
 p. Of course, writing out large strings of javascript could become cumbersome. The first solution is use the [built-in Rails helpers](http://api.rubyonrails.org/classes/ActionView/Helpers/PrototypeHelper/JavaScriptGenerator/GeneratorMethods.html) to generate your Javascript strings. For instance, if we want to highlight a div when we hover over it with the mouse, you could do the following:
 
-bc(ruby).. &lt;% register_js_behaviour "#my_funky_div:mouseover",
+bc(ruby).. <% register_js_behaviour "#my_funky_div:mouseover",
             visual_effect(:highlight, "my_other_div", :duration =&gt; 0.5) %&gt;
 
 p. Now, if you load up a page with one of the above calls and View Source, you might expect to see a whole load of generated Javascript. Except you won't - thats because the unobtrusive_javascript plugin makes use of a special controller and view to dynamically generate your behaviour rules at runtime, which are then linked to using a normal script tag. That means you can attach as many behaviours to your page as you like, from anywhere in your view or controller, *without* clogging up your rendered HTML with Javascript.
@@ -34,7 +34,7 @@ Next, there is the issue of graceful degradation. The two primary candidates for
 
 This initial release contains an updated version of the form\_remote\_tag helper - by default it does exactly the same thing as the built-in Rails helper but making it use unobtrusive Javascript is a case of one small addition to your code:
 
-bc(ruby).. &lt;%= form_remote_tag :url => { :action => 'foo' }, :unobtrusive => true %&gt;
+bc(ruby).. <%= form_remote_tag :url => { :action => 'foo' }, :unobtrusive => true %
 
 p. Because the event:Selector library depends on an HTML ID to attach an event, your forms will need an ID but worry not - another modification to the form\_remote\_tag helper will mean that if you do not specify your own HTML ID, one will be automatically generated for you.
 

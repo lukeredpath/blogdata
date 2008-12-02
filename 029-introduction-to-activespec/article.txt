@@ -30,11 +30,9 @@ h3. Getting started with ActiveSpec
 
 Before we can do anything, we need to install ActiveSpec. This can be done easily using RubyGems.
 
-<pre><code class="shell">
-$ gem install activespec
-</code></pre>
+bc(shell).. $ gem install activespec
 
-We'll start by taking a look at the ActiveSpec::Specifications module. This module contains low-level, generic Specifications, that match a lot of the functionality provided by ActiveRecord's validation macros. These include:
+p. We'll start by taking a look at the ActiveSpec::Specifications module. This module contains low-level, generic Specifications, that match a lot of the functionality provided by ActiveRecord's validation macros. These include:
 
   * CollectionSpecification (validates_inclusion_of and validates_exclusion_of)
   * ConfirmationSpecification (validates_confirmation_of)
@@ -43,56 +41,47 @@ We'll start by taking a look at the ActiveSpec::Specifications module. This modu
 
 All specifications in ActiveSpec conform to the same, simple one-method interface, <code class="ruby">satisfied_by?</code> In addition, all of the above Specifications can be used against multiple attributes of an object, in a similar way to the ActiveRecord validations macros. Here's SizeSpecification in action:
 	
-<pre><code class="ruby">
-user = User.new(:username => 'luke')
+bc(ruby).. user = User.new(:username => 'luke')
 spec = SizeSpecification.new(6, :username)
 spec.satisfied_by? user
 #=> false
-</code></pre>
 
-On the face of it, this offers nothing different to using <code class="ruby">validates_size_of :user, :is => 6</code> On their own, these low-level Specifications offer little, except for an alternative implementation of the built-in ActiveRecord validations. Its when you start combining them with other low-level specifications, as well as your own custom specification objects, to create more complex specifications that their power becomes more obvious.
+p. On the face of it, this offers nothing different to using <code class="ruby">validates_size_of :user, :is => 6</code> On their own, these low-level Specifications offer little, except for an alternative implementation of the built-in ActiveRecord validations. Its when you start combining them with other low-level specifications, as well as your own custom specification objects, to create more complex specifications that their power becomes more obvious.
 	
 h3. Composite specifications
 	
 To aid in the creation of composite specifications (a collection of specifications that can be treated as an individual specification due to a matching interface), ActiveSpec provides a CompositeSpecification class:
 	
-<pre><code class="ruby">
-spec = CompositeSpecification.new
+bc(ruby).. spec = CompositeSpecification.new
 spec.add_specification(SizeSpecification.new(6, :username))
 spec.add_specification(CollectionSpecification.new(18..30, :age))
 spec.add_specification(ConfirmationSpecification.new(:password))
 spec.satisfied_by?(User.new)
 #=> false
-</code></pre>
 
-Of course, because a CompositeSpecification and a single Specification share the same interface, there is no reason why you can't add composite specifications to other composite specifications.
+p. Of course, because a CompositeSpecification and a single Specification share the same interface, there is no reason why you can't add composite specifications to other composite specifications.
 
 Finally, ActiveSpec provides two low-level convenience classes. The first is a decorator called NotSpecification. You can use this to reverse the result of a specification (i.e. if a specification returns true, then it will return false when wrapped in a NotSpecification decorator). One potential application of this is in the implementation of both <code class="ruby">validates_exclusion_of</code></pre> using the CollectionSpecification:
 	
-<pre><code class="ruby">
-spec = CollectionSpecification.new(1..10, :age)
+bc(ruby).. spec = CollectionSpecification.new(1..10, :age)
 # or validates_inclusion_of :age, :in => 1..10
 
 spec_two = NotSpecification.new(CollectionSpecification.new(1..10, :age))
 # or validates_exclusion_of :age, :in => 1..10
-</code></pre>
 
-The second convenience is a simple adapter that can be used to wrap around Proc objects to make them conform to the specification interface. This makes it possible to use Procs as ad-hoc specifications:
+p. The second convenience is a simple adapter that can be used to wrap around Proc objects to make them conform to the specification interface. This makes it possible to use Procs as ad-hoc specifications:
 
-<pre><code class="ruby">
-spec = ProcSpecification.new(proc{ |object|
+bc(ruby).. spec = ProcSpecification.new(proc{ |object|
 	# do something with object
 	# and return true or false
 })
 spec.satisfied_by? some_object
-</code></pre>
 
-h3. Taking things further with ActiveSpec::Base
+p. h3. Taking things further with ActiveSpec::Base
 
 So far we've demonstrated some of the built-in ActiveSpec generic specifications can be used in place of ActiveRecord validations and how they can be combined to create more complicated specifications. Whilst this forms the core of ActiveSpec's functionality, using these low-level specifications directly isn't very elegant. ActiveSpec::Base allows you to construct composite specifications in a much more declarative manner that will feel a lot more comfortable for those used to ActiveRecord validations. All you need to do is inherit from ActiveSpec::Base.
 
-<pre><code class="ruby">
-class UserSpecification < ActiveSpec::Base
+bc(ruby).. class UserSpecification < ActiveSpec::Base
 	requires_presence_of :username, :password
 	requires_size 6, :password
 	requires_confirmation_of :password
@@ -100,39 +89,33 @@ class UserSpecification < ActiveSpec::Base
 end
 
 UserSpecification.satisfied_by?(some_user)
-</code></pre>
 
-For every built-in low-level specification, there is an equivalent <code class="ruby">must_satisfy</code> You can also pass in a block to must_satisfy and it will automatically be converted into a ProcSpecification.
+p. For every built-in low-level specification, there is an equivalent <code class="ruby">must_satisfy</code> You can also pass in a block to must_satisfy and it will automatically be converted into a ProcSpecification.
 	
-<pre><code class="ruby">
-class AdvancedUserSpecification < ActiveSpec::Base
+bc(ruby).. class AdvancedUserSpecification < ActiveSpec::Base
   must_satisfy :valid_user_specification
   must_satisfy do |user|
 		# do something with user
 	end
 end
-</code></pre>
 
-Finally, the ActiveSpec::Context module defines a <code class="ruby">specification</code></pre> method will be made available in the global namespace. Using it couldn't be simpler:
+p. Finally, the ActiveSpec::Context module defines a <code class="ruby">specification</code></pre> method will be made available in the global namespace. Using it couldn't be simpler:
 	
-<pre><code class="ruby">
-specification :valid_user do
+bc(ruby).. specification :valid_user do
   requires_presence_of :username, :password
   requires_confirmation_of :password
   must_satisfy :another_specification
 end
 
 ValidUserSpecification.satisfied_by?(some_user)
-</code></pre>
 
-As you can see from the above example, all of the macros available in ActiveSpec::Base are available to the DSL. The DSL will automatically create a specification class that inherits from ActiveSpec::Base which can then be used in the same way as your other specifications.
+p. As you can see from the above example, all of the macros available in ActiveSpec::Base are available to the DSL. The DSL will automatically create a specification class that inherits from ActiveSpec::Base which can then be used in the same way as your other specifications.
 
 h3. Using the Satisfies mixin for easy integration
 
 The final piece of the ActiveSpec puzzle is the ActiveSpec::Satisfies mixin which makes it possible to attach specifications directly to a class. Whilst this increases coupling, there are times when you always want a class to pass one or more specifications and manually passing objects into specification objects can get quite tedious. The ActiveSpec::Satisfies mixin adds two new methods to your class - a class method called <code class="ruby">satisfies_specs?</code> If the use isn't obvious, allow me to demonstrate:
 	
-<pre><code class="ruby">
-class User
+bc(ruby).. class User
   must_satisfy :valid_user_specification
 
   # optional :if argument takes a symbol or a block
@@ -147,30 +130,25 @@ user.satisfies_specs?
 user.activated = true
 user.satisfies_specs?
 # evaluates both specifications
-</code></pre>
 
-If you want to use this functionality in your Rails models, add this to your environment.rb file:
+p. If you want to use this functionality in your Rails models, add this to your environment.rb file:
 
-<pre><code class="ruby">
-require 'active_spec'
+bc(ruby).. require 'active_spec'
 ActiveRecord::Base.send(:include, ActiveSpec::Satisfies)
-</code></pre>
 
-There are plans to make ActiveRecord integration easier in the future with the use of a Rails plugin.
+p. There are plans to make ActiveRecord integration easier in the future with the use of a Rails plugin.
 
 h3. Give it a try!
 
 ActiveSpec is still in its early stages - its only at version 0.1. The next release will focus on improvements to the existing code and tackling the second use of specifications for selection. Work on this is still in its early stages, but here is a small teaser:
 
-<pre><code class="ruby">
-# pure ruby selection
+bc(ruby).. # pure ruby selection
 User.find_by_specification(SomeAdvancedUserSpecification)
 
 # specifications for SQL queries?
 User.find(:all, :conditions => SomeAdvancedUserSpecification.to_sql)
-</code></pre>
 
-If you have some cool ideas for ActiveSpec, or feedback on any of the above, please let me know.
+p. If you have some cool ideas for ActiveSpec, or feedback on any of the above, please let me know.
 
 h3. Further information
 

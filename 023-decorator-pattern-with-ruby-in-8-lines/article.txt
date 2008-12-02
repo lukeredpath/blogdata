@@ -6,28 +6,23 @@ I'll borrow a simple example from the excellent "Head First Design Patterns":htt
 
 Let's say you want to calculate the cost of a cup of coffee. You have Coffee class, which implements a <code class="ruby">cost()</code></pre> method. For the purposes of this example, let's just hardcode a value:
 
-<pre><code class="ruby">
-class Coffee
+bc(ruby).. class Coffee
   def cost
     2
   end
 end
-</code></pre>
 
-Great. But what if we want the cost of a coffee with milk? We could have a new class:
+p. Great. But what if we want the cost of a coffee with milk? We could have a new class:
 
-<pre><code class="ruby">
-class WhiteCoffee
+bc(ruby).. class WhiteCoffee
   def cost
     2.4
   end
 end
-</code></pre>
 
-OK. But now we want cream. And sprinkles. Clearly, creating new classes is going to lead to a huge number of classes in our application. It just isn't realistic to create classes for different combinations of coffee and extras. It could get worse - what if we have different types of coffee? We would then have to have combinations of extras with each different type of coffee. It just isn't going to work. Enter the decorator pattern. Here's the the 8 lines of Ruby mentioned in this entry's title:
+p. OK. But now we want cream. And sprinkles. Clearly, creating new classes is going to lead to a huge number of classes in our application. It just isn't realistic to create classes for different combinations of coffee and extras. It could get worse - what if we have different types of coffee? We would then have to have combinations of extras with each different type of coffee. It just isn't going to work. Enter the decorator pattern. Here's the the 8 lines of Ruby mentioned in this entry's title:
 
-<pre><code class="ruby">
-module Decorator
+bc(ruby).. module Decorator
   def initialize(decorated)
     @decorated = decorated
   end
@@ -36,24 +31,20 @@ module Decorator
     args.empty? ? @decorated.send(method) : @decorated.send(method, args)
   end
 end
-</code></pre>
 
-And thats all you need. You can include this into any class you want to act as a decorator. You can then use that decorator as if it was the object it is decorating; by default all messages sent to the decorator are forwarded on to the decorated object. You can then decorate the methods you need to extend:
+p. And thats all you need. You can include this into any class you want to act as a decorator. You can then use that decorator as if it was the object it is decorating; by default all messages sent to the decorator are forwarded on to the decorated object. You can then decorate the methods you need to extend:
 
-<pre><code class="ruby">
-class Milk
+bc(ruby).. class Milk
   include Decorator
 
   def cost
     @decorated.cost + 0.4
   end
 end
-</code></pre>
 
-So how does this solve our original problem? The real power of decorators lies in the fact that they can act like the objects they are decorating. By taking this one step further, you can wrap decorators with other decorators as long as they share the same interface. By creating decorators for our different "extras", we can create coffees using a combination of decorators and get the total cost of the coffee.
+p. So how does this solve our original problem? The real power of decorators lies in the fact that they can act like the objects they are decorating. By taking this one step further, you can wrap decorators with other decorators as long as they share the same interface. By creating decorators for our different "extras", we can create coffees using a combination of decorators and get the total cost of the coffee.
 
-<pre><code class="ruby">
-class Whip
+bc(ruby).. class Whip
   include Decorator
 
   def cost 
@@ -73,12 +64,10 @@ Whip.new(Coffee.new).cost
 #=> 2.2
 Sprinkles.new(Whip.new(Milk.new(Coffee.new))).cost
 #=> 2.9
-</code></pre>
 
-Of course, there's nothing stopping us from making life easier with a few factory methods:
+p. Of course, there's nothing stopping us from making life easier with a few factory methods:
 
-<pre><code class="ruby">
-class CoffeeFactory
+bc(ruby).. class CoffeeFactory
   def self.latte
     SteamedMilk.new(Espresso.new)
   end
@@ -92,25 +81,21 @@ order = Order.new
 order.add(Coffee.new)
 order.add(CoffeeFactory.cappuccino)
 puts order.total
-</code></pre>
 
-Due to Ruby's highly dynamic nature, the Decorator pattern isn't the only way of extending class functionality at runtime, however I just love how simple it is to implement the pattern in Ruby. For more information on implementing decorators in Ruby, including generic decorators and alternatives to the traditional decorator pattern, see the "DecoratorPattern page at the RubyGarden":http://wiki.rubygarden.org/Ruby/page/show/DecoratorPattern.
+p. Due to Ruby's highly dynamic nature, the Decorator pattern isn't the only way of extending class functionality at runtime, however I just love how simple it is to implement the pattern in Ruby. For more information on implementing decorators in Ruby, including generic decorators and alternatives to the traditional decorator pattern, see the "DecoratorPattern page at the RubyGarden":http://wiki.rubygarden.org/Ruby/page/show/DecoratorPattern.
 
 Finally, it would be nice to maintain some kind of identity when using decorators. The RubyGarden page above has one approach. Whilst we aren't using inheritance, it would be nice to retain one of its features:
 
-<pre><code class="ruby">
-CoffeeFactory.cappucino.kind_of? Coffee
+bc(ruby).. CoffeeFactory.cappucino.kind_of? Coffee
 #=> true
-</code></pre>
 
-I can think of a few ways of extending my Decorator class to retain this functionality, but I'm gonna leave this one to the reader. Over to you.
+p. I can think of a few ways of extending my Decorator class to retain this functionality, but I'm gonna leave this one to the reader. Over to you.
 
 *Update*: In typical Ruby-fashion, my 8 lines of code has been beaten by, well, zero lines of code by "Trevor Squires":http://somethinglearned.com. Using modules, super and extend, Trevor came up with this "alternative solution":http://pastie.caboo.se/12066, which maintains identity as well. Bow down to his Ruby-fu.
 
 *Update 2*: Never one to step back from a challenge, I see Trevor's Ruby-fu and raise him with a bit of my own. I still feel my decorator implementation carries some weight, with a nice bit of syntatic sugar:
 
-<pre><code class="ruby">
-class Milk
+bc(ruby).. class Milk
   include Decorator
 end
 
@@ -127,16 +112,14 @@ Coffee.new
 
 # coffee with milk, whip and sprinkles
 Coffee.with :milk, :whip, :sprinkles
-</code></pre>
 
-The <code class="ruby">self.with</code></pre> method could do with being extracted into a Decoratable module but "here's a concrete implementation":http://pastie.caboo.se/12092. Trevor's method still has an advantage in that it maintains object identity, but I have some ideas to solve that. But alas, it is past 1am and bed beckons.
+p. The <code class="ruby">self.with</code></pre> method could do with being extracted into a Decoratable module but "here's a concrete implementation":http://pastie.caboo.se/12092. Trevor's method still has an advantage in that it maintains object identity, but I have some ideas to solve that. But alas, it is past 1am and bed beckons.
 
 *Update 3*: Trevor fights back with "his own self.with() implementation":http://pastie.caboo.se/12097. Personally I prefer the <code class="ruby">extend</code></pre> implementation, it eliminates the symbol to class trickery, and still maintains identity. His 'fu is still strong.
 
 However, there is one downside to Trevor's method: you can only apply a decorator to an object using <filterjscode lang="ruby" inline="true">extend</code></pre> once. But what if you wanted double sprinkles?
 
-<pre><code class="ruby">
-Sprinkles.new(Sprinkles.new(Coffee.new))
+bc(ruby).. Sprinkles.new(Sprinkles.new(Coffee.new))
 
 # or with a bit of sugar (no pun intended)
 Coffee.with :sprinkles, :sprinkles

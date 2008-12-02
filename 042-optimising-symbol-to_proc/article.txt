@@ -2,8 +2,7 @@ Whilst pairing with "Paul":http://po-ru.com the other day I noticed that he pref
 
 Now I'm not one for premature optimisation, but with an idiom like Symbol#to_proc likely to be used throughout a codebase, performance hits like this add up and as things stand, the Rails implementation of Symbol#to_proc is pretty expensive:
 
-<pre><code class="ruby">
-require 'benchmark'
+bc(ruby).. require 'benchmark'
 require 'rubygems'
 require 'active_support'
 
@@ -18,44 +17,35 @@ Benchmark.bm do |bm|
     BIG_ARRAY.map(&:upcase)
   end
 end
-</code></pre>
 
-Output on my 2Ghz quad-core Mac Pro:
+p. Output on my 2Ghz quad-core Mac Pro:
 
-<pre><code class="shell">
-                user     system      total        real
+bc(shell)..  	            user     system      total        real
 Standard block  0.720000   0.060000   0.780000 (  0.772927)
 Symbol#to_proc  3.030000   0.010000   3.040000 (  3.040889)
-</code></pre>
 
-Ouch. That's roughly four times slower. --Based on my naive understanding of how Symbol#to_proc was implemented, it figured that the bottleneck was the creation of a new Proc object for every iteration; the proc doesn't need to change for each iteration so surely we could just memoize it--?
+p. Ouch. That's roughly four times slower. --Based on my naive understanding of how Symbol#to_proc was implemented, it figured that the bottleneck was the creation of a new Proc object for every iteration; the proc doesn't need to change for each iteration so surely we could just memoize it--?
 
 *Update*: It seems that my initial assumption was incorrect; to_proc is in fact only called once. The real issue here is not the instantiation of a new proc, but the Rails implementation. Rails uses this slightly more complicated implementation in order to support passing of multiple arguments with the method call:
 
-<pre><code class="ruby">
-Proc.new { |*args| args.shift.__send__(self, *args) }
-</code></pre>
+bc(ruby).. Proc.new { |*args| args.shift.__send__(self, *args) }
 
-This allows you to do a few neat things with multiple elements of a collection like <code>[1, 2, 3].inject(&:+)</code> but I consider this supporting an edge case at the expense of performance.
+p. This allows you to do a few neat things with multiple elements of a collection like <code>[1, 2, 3].inject(&:+)</code> but I consider this supporting an edge case at the expense of performance.
 
 I've never found myself in need of the functionality provided by Rails' implementation (I didn't even know it was supported) but I do find myself using the <code>obj.map(&:method)</code> idiom a lot so the following simplified implementation suits me just fine:
 
-<pre><code class="ruby">
-class Symbol
+bc(ruby).. class Symbol
   def to_proc
     proc { |obj| obj.__send__(self) }
   end
 end
-</code></pre>
 
-The performance gain is significant:
+p. The performance gain is significant:
 
-<pre><code class="shell">
-                user     system      total        real
+bc(shell)..                 user     system      total        real
 Symbol#to_proc  0.910000   0.010000   0.920000 (  0.916718)
-</code></pre>
 
-The implementation itself is trivial but I've made it "available on pastie":http://pastie.caboo.se/122010 - just drop it into a file somewhere in your Rails lib folder. If I find the time, I will try and package it up as a basic Rails plugin too. It's worth bearing in mind that Ruby 1.9's implementation will probably support the passing of arguments like the Rails implementation but hopefully it should be much faster.
+p. The implementation itself is trivial but I've made it "available on pastie":http://pastie.caboo.se/122010 - just drop it into a file somewhere in your Rails lib folder. If I find the time, I will try and package it up as a basic Rails plugin too. It's worth bearing in mind that Ruby 1.9's implementation will probably support the passing of arguments like the Rails implementation but hopefully it should be much faster.
 
 The performance of Symbol#to_proc has also been brought up on "Pratik Naik's blog":http://m.onkey.org/2007/6/30/let-s-start-with-wtf and this "Rails ticket":http://dev.rubyonrails.org/ticket/8818.
 

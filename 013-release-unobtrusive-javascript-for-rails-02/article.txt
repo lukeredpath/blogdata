@@ -24,20 +24,16 @@ There is currently only one known issue:
 
 Here's a look at some of the new features, starting with writing behaviours using pure Ruby:
 
-<pre><code class="ruby">
-&lt;% apply_behaviour "#mylink:click" do |page, element|
+bc(ruby).. &lt;% apply_behaviour "#mylink:click" do |page, element|
     page.alert "You clicked me! Now watch me fade..."
     element.visual_effect :fade
   end %&gt;
-</code></pre>
 
-Attaching behaviours directly to elements with <code class="ruby">content\_tag</code>
+p. Attaching behaviours directly to elements with <code class="ruby">content\_tag</code>
 
-<pre><code class="ruby">
-&lt;%= content_tag "div", "My funky box", :onclick => "alert('Hello World!')" %&gt;
-</code></pre>
+bc(ruby).. &lt;%= content_tag "div", "My funky box", :onclick => "alert('Hello World!')" %&gt;
 
-We want you to really put this release through its paces - does it conflict with other plugins? Does it cause unexpected problems with Rails itself? Are there any other features you'd like to see? The place to report these feature requests and bugs is of course [the Agile Evolved Open Source Trac](http://opensource.agileevolved.com/trac/newticket).
+p. We want you to really put this release through its paces - does it conflict with other plugins? Does it cause unexpected problems with Rails itself? Are there any other features you'd like to see? The place to report these feature requests and bugs is of course [the Agile Evolved Open Source Trac](http://opensource.agileevolved.com/trac/newticket).
 
 **Further Information:**
 
@@ -46,24 +42,19 @@ We want you to really put this release through its paces - does it conflict with
 
 **Installation note**: some people have [reported](http://opensource.agileevolved.com/trac/ticket/9) that the plugin fails because the Rails plugin installation script installs the plugin to rel-0.2 instead of unobtrusive\_javascript. This is a failing of Rails' plugin installation system in that it doesn't correctly handle the typical tags/trunk/branches Suvbersion repository layout. If you install the plugin using script/plugin, make sure you rename the rel-0.2 folder to unobtrusive\_javascript. If you are using svn:externals, you can edit your externals file manually:
 
-<pre><code class="shell">
-$ svn propedit svn:externals vendor/plugins
-</code></pre>
+bc(shell).. $ svn propedit svn:externals vendor/plugins
 
-Then add the following line to it:
+p. Then add the following line to it:
 
-<pre><code class="shell">
-unobtrusive_javascript http://opensource.agileevolved.com/svn/root/rails_plugins/unobtrusive_javascript/tags/rel-0.2
+bc(shell).. unobtrusive_javascript http://opensource.agileevolved.com/svn/root/rails_plugins/unobtrusive_javascript/tags/rel-0.2
 </code></pre>
 
 ## Future Plans
 
 So what do we have planned for 0.3? More patches to Rails' more complicated built-in helpers, such as <code class="ruby">apply\_behaviour</code> how about some of this:
 
-<pre><code class="ruby">
-&lt;% apply_behaviour "div.draggable", make_draggable %&gt;
+bc(ruby).. &lt;% apply_behaviour "div.draggable", make_draggable %&gt;
 &lt;% apply_behaviour "li.sortable", make_sortable %&gt;
 &lt;% apply_behaviour "#searchbox", make_autocomplete %&gt;
-</code></pre>
 
-Comments open!
+p. Comments open!

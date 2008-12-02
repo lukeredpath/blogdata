@@ -10,24 +10,19 @@ Before you can start sending SMS messages from your Rails app, you'll need a Cli
 
 Once you've signed up, you need to install the Ruby Clickatell gem. I've just released version 0.4 and its fast approaching being stable for production use - all it needs is some users to test it out a bit more extensively. So install it and give it a go:
 
-<pre><code class="shell">
-$ sudo gem install clickatell
-</code></pre>
+bc(shell).. $ sudo gem install clickatell
 
-The gem also comes with a handy command-line utility, "sms", which can be used to send SMS messages directly from the command line. For more information, simply run:
+p. The gem also comes with a handy command-line utility, "sms", which can be used to send SMS messages directly from the command line. For more information, simply run:
 
-<pre><code class="shell">
-$ sms --help
-</code></pre>
+bc(shell).. $ sms --help
 
-More information can be found on the "website":http://clickatell.rubyforge.org.
+p. More information can be found on the "website":http://clickatell.rubyforge.org.
 
 h3. Integrating with Rails
 
 For our basic example application, which will use REST-ful conventions, we will expose a single resource - sms - which we can POST to to send an SMS to a specified recipient. First of all, lets create a simple wrapper around the Clickatell API which will act as our "resource" that takes a hash containing our username/password/api-key and has an ActiveRecord-style create method.
 
-<pre><code class="ruby">
-require 'clickatell'
+bc(ruby).. require 'clickatell'
 
 class SMS
   def initialize(config)
@@ -47,52 +42,42 @@ class SMS
       )
     end
 end
-</code></pre>
 
-The above wrapper isn't strictly necessary but it helps to keep our controller as "skinny":http://weblog.jamisbuck.org/2006/10/18/skinny-controller-fat-model as possible.
+p. The above wrapper isn't strictly necessary but it helps to keep our controller as "skinny":http://weblog.jamisbuck.org/2006/10/18/skinny-controller-fat-model as possible.
 
 For convenience, we'll want to keep our Clickatell credentials in a YAML file in the config folder of our Rails app:
 
-<pre><code class="yaml">
-# config/clickatell.yml
+bc(yaml).. # config/clickatell.yml
 api_key: abcdefghi123
 username: joebloggs
 password: secret
-</code></pre>
 
-We'll also want to access this config within our Rails app easily:
+p. We'll also want to access this config within our Rails app easily:
 
-<pre><code class="yaml">
-# config/environments/production.rb
+bc(yaml).. # config/environments/production.rb
 CLICKATELL_CONFIG = YAML.load(File.open(File.join(RAILS_ROOT, 'config', 'clickatell.yml')))
-</code></pre>
 
-h3. Bringing it altogether
+p. h3. Bringing it altogether
 
 Now we'll want to configure our routing to expose our SMS resource:
 
-<pre><code class="ruby">
-ActionController::Routing::Routes.draw do |map|
+bc(ruby).. ActionController::Routing::Routes.draw do |map|
   map.resource :sms
 end
-</code></pre>
 
-Next, we'll create our form under app/views/sms/new.rhtml:
+p. Next, we'll create our form under app/views/sms/new.rhtml:
 
-<pre><code class="ruby">
-&lt;% form_tag '/sms', :method => :post do -%&gt;
+bc(ruby).. &lt;% form_tag '/sms', :method => :post do -%&gt;
   &lt;label>Enter the recipients mobile number:&lt;/label&gt;
   &lt;%= text_field_tag "recipient" %&gt;
   &lt;label>Enter your message:&lt;/label&gt;
   &lt;%= text_area_tag "message_text" %&gt;
   &lt;%= submit_tag "Send SMS" %&gt;
 &lt;% end %&gt;
-</code></pre>
 
-Finally, all we have to do is create our controller's create method to handle the form submission.
+p. Finally, all we have to do is create our controller's create method to handle the form submission.
 
-<pre><code class="ruby">
-class SmsController < ApplicationController
+bc(ruby).. class SmsController < ApplicationController
   def create
     sms = SMS.new(CLICKATELL_CONFIG)
     sms.create(params[:recipient], params[:message_text])
@@ -103,9 +88,8 @@ class SmsController < ApplicationController
     redirect_to :back
   end
 end
-</code></pre>
 
-And thats all there is to it. Of course, in a real application you might want to think about things such as validation of required attributes and message length. I'll leave that as an exercise to the reader.
+p. And thats all there is to it. Of course, in a real application you might want to think about things such as validation of required attributes and message length. I'll leave that as an exercise to the reader.
 
 For more information:
 

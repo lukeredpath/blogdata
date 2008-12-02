@@ -6,27 +6,23 @@ This resulted in a race condition that could potentially result in a loss of dat
 
 The solution seemed obvious at first - instead of doing:
 
-<pre><code class="ruby">
-obj.some_attribute = 'foo'
+bc(ruby).. obj.some_attribute = 'foo'
 obj.save
-</code></pre>
 
-We could simply do:
+p. We could simply do:
 
 <pre><code class="ruby"> 
 obj.update_attribute('some_attribute', 'foo')
-</code></pre>
 
-But we were mistaken. Whilst the method's name would seem to imply that ONLY a single attribute would be updated, this is in fact not the case. All update_attribute() does is exactly the same thing as the first code snippet. From the Rails source:
+p. But we were mistaken. Whilst the method's name would seem to imply that ONLY a single attribute would be updated, this is in fact not the case. All update_attribute() does is exactly the same thing as the first code snippet. From the Rails source:
 
 <pre><code class="ruby"> 
 def update_attribute(name, value)
   send(name.to_s + '=', value)
   save
 end
-</code></pre>
 
-As it turns out, there isn't a built-in way of updating just a single attribute that we could see. So we wrote our own, simple solution:
+p. As it turns out, there isn't a built-in way of updating just a single attribute that we could see. So we wrote our own, simple solution:
 
 <pre><code class="ruby"> 
 def update_single_attribute(attribute, value)
@@ -37,6 +33,5 @@ def update_single_attribute(attribute, value)
     "#{self.class.name} Attribute Update"
   )
 end
-</code></pre>
 
-Feel free to use this in your own apps if needed - the easiest way to use is it is as a [monkey patch](http://en.wikipedia.org/wiki/Monkey-Patch) to ActiveRecord - simply paste the following code into a file called active\_record\_patches.rb in your app's lib folder and require it at the bottom of your environment.rb file. Alternatively, you could patch the Rails source directly or convert this to a Rails plugin.
+p. Feel free to use this in your own apps if needed - the easiest way to use is it is as a [monkey patch](http://en.wikipedia.org/wiki/Monkey-Patch) to ActiveRecord - simply paste the following code into a file called active\_record\_patches.rb in your app's lib folder and require it at the bottom of your environment.rb file. Alternatively, you could patch the Rails source directly or convert this to a Rails plugin.

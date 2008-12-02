@@ -22,27 +22,23 @@ The class and module snippets, like a lot of newer snippets, use a single tab ex
 
 Finally, there are snippets for many of the common tasks performed when writing a Ruby script, such as entering the shebang line <strong>[rb]</strong>, requiring files <strong>[req]</strong>, generating symbol => value key/value pairs for hashes <strong>[:]</strong>, lambda blocks <strong>[lam]</strong>, and one of my favorites, path-from-here <strong>[patfh]</strong> which is used for getting the path relative to the current script and generates:
 
-<pre><code class="ruby">
-File.join(File.dirname(__FILE__), *%w<strong>[rel path here]</strong>)
-</code></pre>
+bc(ruby).. File.join(File.dirname(__FILE__), *%w<strong>[rel path here]</strong>)
 
-h3. Writing classes/modules
+p. h3. Writing classes/modules
 
 In addition to the snippets for defining classes and modules, there are some other goodies too.
 
 If you want to add "Enumerable":http://ruby-doc.org/core/classes/Enumerable.html support to your class, you need to include the Enumerable module and define an each method. To do this in Textmate, simply create a new class then inside your class definition, use the Enumerable snippet <strong>[Enum]</strong>. This will generate something like this for you:
 
-<pre><code class="ruby">
-class Foo
+bc(ruby).. class Foo
   include Enumerable
 
   def each(&block)
 
   end
 end
-</code></pre>
 
-In a similar fashion, the Comparable snippet <strong>[Comp]</strong> will include the Comparable module and create a stub <=> method for you to fill in.
+p. In a similar fashion, the Comparable snippet <strong>[Comp]</strong> will include the Comparable module and create a stub <=> method for you to fill in.
 
 Defining attributes for your class is a breeze - TextMate contains snippets for attr_reader <strong>[r]</strong>, attr_writer <strong>[w]</strong> and attr_accessor <strong>[rw]</strong>. You can define class methods just as easily as you define instance methods <strong>[defs]</strong>, alias methods <strong>[am]</strong> and overwrite method_missing <strong>[mm]</strong>. Don't forget the singleton class for helping out with that meta-programming goodness <strong>[sin]</strong>.
 

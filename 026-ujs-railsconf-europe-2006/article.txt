@@ -20,18 +20,15 @@ One thing Dan didn't mention in his presentation, which is worth pointing out, i
 
 However, I still want to stress that if you can use the <code class="ruby">link_to_remote</code></pre> can make things a bit funky:
 
-<pre><code class="ruby">
-&lt;% @products.each do |p| %&gt;
+bc(ruby).. &lt;% @products.each do |p| %&gt;
   &lt;p&gt;&lt;%= link_to_remote product.description, :controller => 'products', 
                                                 :action => 'description', 
                                                 :id => p.id %&gt;&lt;/p&gt;
 &lt;% end %&gt;
-</code></pre>
 
-The above will work, but _very_ slowly. That's one behaviour rule for _every_ <code class="ruby">div</code>
+p. The above will work, but _very_ slowly. That's one behaviour rule for _every_ <code class="ruby">div</code>
 
-<pre><code class="ruby">
-&lt;div id="products"&gt;
+bc(ruby).. &lt;div id="products"&gt;
 &lt;% @products.each do |p| %&gt;
   &lt;p&gt;&lt;%= link_to product.description,
            :controller => 'products',
@@ -41,9 +38,8 @@ The above will work, but _very_ slowly. That's one behaviour rule for _every_ <c
 &lt;/div&gt;
 
 &lt;% apply_behaviour "#products a", make_remote_link %&gt;
-</code></pre>
 
-One behaviour for any number of products.
+p. One behaviour for any number of products.
 
 If you haven't tried UJS yet, do give it a go. "www.ujs4rails.com":http://www.ujs4rails.com is the official website, and it contains documentation, tips, tricks, a quick start guide and things such as rdocs and a Trac for filing tickets.
 

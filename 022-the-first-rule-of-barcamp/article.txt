@@ -14,17 +14,15 @@ Jonathan's talk on Comet gave me some ideas about a forthcoming project we're go
 
 Surprisingly, Dan's "Low Pro":http://projects.danwebb.net/wiki/LowPro talk was a revelation to me. I say surprsing, because you think I'd know all about Low Pro, what with it being the core behind the "UJS For Rails":http://www.ujs4rails.com plugin however I was only really aware of its improved event handling capabilities. Even cooler was its improved DOM support and the real killer for me, Behaviour classes. Behaviour classes let you build self-contained classes that contain behaviour for a collection of events, which can then be applied to elements in one goal. Dan is going to be blogging about this in full, but here is a small snippet:
 
-<pre><code class="javascript">
-var Sortable = Behaviour.create({
+bc(javascript).. var Sortable = Behaviour.create({
   initialize : function() { },
   onclick: function() { },
   onmouseup: function() { }
 });
 
 Event.addBehaviour("#todolist li", Sortable);
-</code></pre>
 
-How awesome is that? It would be a great to see a re-implementation of script.aculo.us behaviours using Behaviour classes. Its also a great way of building and packaing up your own unique behaviours.
+p. How awesome is that? It would be a great to see a re-implementation of script.aculo.us behaviours using Behaviour classes. Its also a great way of building and packaing up your own unique behaviours.
 
 *6:14pm*: Award for most bizarre use of the English language goes to "Simon Willison":http://simon.incutio.com.
 

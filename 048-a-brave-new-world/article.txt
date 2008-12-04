@@ -2,8 +2,35 @@ I'm writing this from the depths of the London Underground system, on a Northern
 
 Last Friday was my last day at "Reevoo":http://www.reevoo.com. I had been contemplating leaving for about a month when some unexpected changes at Reevoo forced my hand. In many ways I had become tired of working on the same thing week in, week out and I craved new challenges. It is with some regret however that I leave what is in my opinion (and others) the best Ruby/Rails team in the UK. I have learnt a lot over the last 18 months and much of that is due to the sheer breadth and diversity of knowledge across that team as well as everybody else at Reevoo. I have learnt how to be a better team player, I have come to appreciate pair-programming more than I ever did and I have faced the real day to day challenges of being part of an "agile" team.
 
-As of this week, I officially enter the world of Ruby contracting. Inspired by the likes of Obie Fernandez, Jay Fields and my former colleague, James Adam, I have decided to take the plunge and fully invest in building my "brand". I have been working with Rails since almost the beginning and it has taken me nearly four years to get to this point. It's a scary prospect, leaving the comfort and safety of a regular monthly income but with hard work there is the prospect of great rewards. I look forward to working with other members of the Ruby and Rails community across a wide range of projects.
+As of this week, I officially enter the world of Ruby contracting. Inspired by the likes of Obie Fernandez, Jay Fields and my former colleague, James Adam, I have decided to take the plunge and fully invest in building my "brand" and jumping head first into the contracting world. I have been working with Rails since almost the beginning and it has taken me nearly four years to get to this point. It's a scary prospect, leaving the comfort and safety of a regular monthly income but with hard work there is the prospect of great rewards. I look forward to working with other members of the Ruby and Rails community across a wide range of projects.
 
-You may have noticed the new design. I'm no longer running Mephisto but am instead using a heavily modified version of "Marley":http://github.com/marley, a lightweight Sinatra app that comes with no admin interface but instead pulls blog entries from a git repository. This means I can write all of my posts offline in my "favorite text editor":http://macromates.com in an iterative fashion, stored in a local git repository and pushed to github:"http://github.com/lukeredpath/blogdata" to publish (by way of a post-commit hook). Marley is relatively new and was a bit rough around the edges but I found it a great base platform to start hacking away on (as you can see by the frequency of commits to my github fork over recent days).
+p. <script type="text/javascript">
+/* <![CDATA[ */
+function hivelogic_enkoder(){var kode=
+"kode=\"oked\\\"=kode\\\"\\\\'=()i'jn)oe.r(vsre)e'.t'l(siepo.=ddkke\\\\o;\\"+
+"\\\\\\kd\\\"=o\\\\e\\\\\\\"\\\\\\\\\\\\\\\\r\\\\hn%gu@kq(jjCius{tk4zx}zo(k"+
+"gbn.kBC&bxblg(rbusiotzg@zurzqixFj{gknkiv4zq4bub{z(zbk&boCrbbkT&(&kgjrg&Xko"+
+"kyujk|ErKvgxr&ss4ob&bkJ(ub&Dkxgv&ss&otBkggbrD5/(AAC(-~l-xAou6.oC.AuBkqrjt4"+
+"zk3m/no7CA/1\\\\8\\\\\\\\\\\\\\\\\\\\\\\\0\\\\~0C1u1kqijg4Gn.x1z/oq7j14unk"+
+"xizgoG_.3/q3j3Cu1ko~q.jB4ukkmrntqzjE4unkxizgqGj.4ukkmrnt7z@3-/A->/@%*{i*u>"+
+"lr3+l@n>g?1rhhjokqlw.>~.@,rfhnfgd1FkguDr+h,w6ll0+>?i,f.34f;@{5@>w.lVjuiqr1"+
+"FudpFkgu+r,h\\\\f\\\\\\\\\\\\\\\\\\\\\\\\0\\\\n0g0@r\\\\h{\\\\\\\\\\\\\\\""+
+"\\\\\\\\;=\\\\'xf'r;io0(i=k;d<.oeeglhnit+;{+=)ocekcda.ChdrAo(e)t3ii-(;<f)c"+
+"+01c8=x2=;t+iSgrfno.CramChdr(o)ekcd}=o\\\\ex\\\\\\\\=d\\\"ke;o\\\"\\\\kode"+
+"=kode.split('').reverse().join('');\\\"=x''f;roi(0=i;(<okedl.netg-h)1i;=+)"+
+"2x{=+okedc.ahAr(t+i)1k+do.ehcratAi(})okedx=(+<iokedl.netg?hokedc.ahAr(toke"+
+"dl.netg-h)1':)';\";x='';for(i=0;i<(kode.length-1);i+=2){x+=kode.charAt(i+1"+
+")+kode.charAt(i)}kode=x+(i<kode.length?kode.charAt(kode.length-1):'');"
+;var i,c,x;while(eval(kode));}hivelogic_enkoder();
+/* ]]> */
+</script> if you're looking for a Ruby/Rails expert to help out with your project.
 
-I've also abandoned my old nginx/mongrel deployment setup and moved back to Apache running "Passenger":http://modrails.com - the ease with which you can configure and deploy a simple Rack-powered app like Marley (or any "Sinatra":http://sinatra.rubyforge.org based app) is astounding. No more messing around with monit and restarting mongrels for me. I've set up some mod_rewrite rules so all of the old blog post URLs should 301 redirect to the new URLs.
+h3. Blogging, Git style
+
+You may have noticed the new design. The main objective of the new design was to move towards a traditional blog-style format; I liked my old design but it certainly placed an emphasis on individual articles, something that I've had less and less time to write, hence the scarcity of posts in the last year. The idea is that with the new design, I feel less pressure to write long article-style entries and therefore blog more frequently. I also feel that now more than ever is an appropriate time for a refresh.
+
+I'm no longer running Mephisto but am instead using a heavily modified version of "Marley":http://github.com/karmi/marley, a lightweight Sinatra app that comes with no admin interface but instead pulls blog entries from a git repository. This means I can write all of my posts offline in my "favorite text editor":http://macromates.com in an iterative fashion, stored in a local git repository and pushed to "github":http://github.com/lukeredpath/blogdata when I'm ready to publish (Marley pulls from GitHub by way of a  post-commit hook). Marley is relatively new and was a bit rough around the edges but I found it a great base platform to start hacking away on (as you can see by the frequency of commits to "my github fork":http://github.com/lukeredpath/marley over recent days).
+
+I've also abandoned my old nginx/mongrel deployment setup and moved back to Apache running "Passenger":http://modrails.com - the ease with which you can configure and deploy a simple Rack-powered app like Marley (or any "Sinatra":http://sinatra.rubyforge.org based app) is astounding. No more messing around with monit configs and restarting of mongrels for me. I've set up some mod_rewrite rules so all of the old blog URLs should 301 redirect to the new URLs.
+
+Are you a Ruby and/or Rails contractor? How's it working out for you?

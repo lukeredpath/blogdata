@@ -1,0 +1,3 @@
+"Chris Wanstrath":http://twitter.com/defunkt from GitHub recently tweeted about "his new website":http://defunkt.github.com/. Whilst trying to load it earlier today I accidentally misspelt his username, revealing a GitHub feature that I hadn't come across - GitHub pages.
+
+Simply go to yourusername.github.com and you'll be presented with a friendly error page explaining how to set up your own github.com sub-domain website. It's fairly straightforward - create a repository named yourusername.github.com, create a local master branch and push it to GitHub. Within ten minutes or so, your new site will be up and running. Very cool. "Here's mine":http://lukeredpath.github.com (yes, fairly pointless I know).

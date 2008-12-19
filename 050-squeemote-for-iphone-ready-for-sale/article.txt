@@ -12,4 +12,4 @@ It's been an interesting experience writing my first ever iPhone (or Cocoa) appl
 
 If you have any questions or problems, feel free to leave a comment or drop me an email. I have also set up a "support page on GetSatisfaction":http://getsatisfaction.com/lukeredpath/products/lukeredpath_squeemote.
 
-"Download Squeemote on the iTunes app store":http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=298005260&mt=8
+!http://lukeredpath.co.uk/assets/itunesstore.png(Download Squeemote from the iTunes Store)!:http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=298005260&mt=8

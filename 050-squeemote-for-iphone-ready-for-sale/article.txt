@@ -2,6 +2,8 @@
 
 After some wrangling back and forth, I'm happy to announce that my first iPhone application, Squeemote (formerly iSqueeze) is now "available on the iTunes application store":http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=298005260&mt=8.
 
+!>http://farm4.static.flickr.com/3193/3120384208_d0211a396c.jpg?v=0!
+
 Squeemote for iPhone and iPod Touch is a remote control application for the "SlimDevices Squeezebox&trade;":http://slimdevices.com and similar devices such as the Duet and Boom. This first release is aimed at people who mainly use their own music library rather than streaming services (support of which is currently limited). I intend to add browsing support for streaming services in a later release but my main focus for this initial release was on quality over quantity: I didn't (and do not) want to cram it with features. I focussed on making this the best possible experience for browsing your SqueezeCentre library and controlling your device.
 
 I already have some ideas on further improving the user experience for music browsing and playlist management that will appear in a future release. Another area which is currently quite basic is device management; Squeemote supports multiple devices and allows you to choose which device to use and set a default device but there is currently no support for grouping devices for synchronous playback. This, plus browsing support for streaming services will be my priority in the next major release.

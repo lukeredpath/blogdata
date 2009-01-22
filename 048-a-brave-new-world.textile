@@ -1,4 +1,6 @@
+---
 :title: A Brave New World
+:published_on: Thu Dec 4 15:10:53 2008 +0000
 :format: :textile
 ---
 I'm writing this from the depths of the London Underground system, on a Northern Line train out of the city. I've just come from several meetings regarding some forthcoming opportunities. This is the beginning of the next step of my career as a Ruby programmer.

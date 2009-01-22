@@ -1,0 +1,34 @@
+--- 
+:format: :textile
+:title: Rails plugin repository *is* on the way
+:published_on: Fri Aug 18 13:06:00 UTC 2006
+---
+"Ryan Daigle":http://www.ryandaigle.com "speculated on his blog":http://www.ryandaigle.com/articles/2006/08/17/in-the-works-an-official-rails-plugin-repository that an official Rails plugin repository was in the works. He referred to an app checked into the Rails subversion repository recently.
+
+I can announce that a Rails plugin repository *is* on the way, although not the one currently in the Rails repository. That particular app was a repository started by "Rick Olson":http://technoweenie.net. The repository that is on the way is actually being worked on by myself and "James Adam":http://interblah.net of "Rails Engines":http://rails-engines.org/ fame.
+
+h3. Background and motivation
+
+To give a bit of background to this; the idea of an official plugin repository was born out of a conversation between Rick Olson, James and "Geoffrey Grosenbach":http://topfunky.com at RailsConf. Work had already begun on improving the Rails plugin mechanism with "RaPT":http://rapt.rubyforge.org, a project run by Geoffrey, James and "Ben Curtis":http://bencurtis.com/. I recently joined the RaPT team and after some discussion with the rest of the team, James and I started development on the project.
+
+Some people may ask why an official repository is needed. Ben Curtis currently maintains a "good repository":http://agilewebdevelopment.com/ of his own however it is unfair to rely on one person to keep the repository running. As more and more people use, develop and rely on plugins, the existing setup - a wiki page - is simply not scalable or maintainable. Plugins are the number one way of adding/changing Rails functionality without having to submit patches to the core - something that "DHH":http://loudthinking.com actively encourages and something I fully support. I believe the core *should* be as lean as possible with additional functionality being provided by plugins.
+
+Our original idea was to develop a plugin repository that sat somewhere between "Rubyforge":http://rubyforge.org and the "Mozilla Firefox extensions website":https://addons.mozilla.org/ - this included tagging, comments and ratings - the usual Web 2.0 suspects. However, after some discussion with the Rails core team we decided to drop those features in favour of making adding plugins as easy as possible and developing a way of detecting plugin health by gathering test run statistics to both encourage testing of plugins and make it clear how likely it is that a plugin will work with a particular Ruby/Rails version. The other downside to having ratings/comments etc. was the need to make users sign up for an account, something that is best avoided.
+
+The other major feature that James and I felt was really important was the correct (and mostly automatic) handling of plugin releases and metadata. This includes reading plugin metadata from an about.yml file and handling plugin releases through either updates to the release number in the about.yml file or repository tags. One of the major failings of the current script/plugin tool is its inability to handle plugins that use the traditional trunk/tags/branches structure - something I feel is essential for anything but trivial plugins.
+
+To sum up, the core functionality of the repository will be:
+
+* Make it easy to browse plugins and view plugin/release health/compatibility
+* Correctly and automatically handle plugin releases/versions and metadata
+* Make adding of plugins - either single plugins or entire repositories of plugins - as easy and foolproof as possible
+* Provide some Rake tasks to make it possible to announce new plugins/releases without having to go to the repository website
+* Improve the script/plugin tool and make it use the plugin repository as its main source, making it possible to install plugins by simply specifying the plugin name
+
+h3. Current status of the project.
+
+James and I have made good progress on the project so far. You can view where we are up to "here":http://leviathon.agileevolved.com/ - do bear in mind that this is still under development and cannot be considered reliable at this point. We are aiming to move the project over to the Rails subversion repository in the next few days.
+
+I cannot give an accurate ETA on when the project will be ready to go live, but we really want to have this up and running in time for the European RailsConf. In the meantime, have a play with what we've done so far and get a feel for it. If you have any suggestions please do speak up as it is the community as a whole that this is aimed at.
+
+*Update*: James has also put up a "post on his blog":http://interblah.net/2006/8/18/the-rails-plugins-repository about the project.

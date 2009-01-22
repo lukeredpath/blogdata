@@ -1,0 +1,12 @@
+--- 
+:format: :textile
+:title: New business cards
+:published_on: Fri Sep 08 12:15:00 UTC 2006
+---
+Check out our new "Agile Evolved":http://www.agileevolved.com business cards which arrived today, just in time for RailsConf.
+
+<a href="http://www.flickr.com/photos/lukeredpath/237748463/" title="Photo Sharing"><img src="http://static.flickr.com/82/237748463_d48630af72_o.jpg" width="680" height="313" alt="businesscards" /></a>
+
+They look really cool. They were printed by "Aubergine Print":http://aubergineprint.co.uk/. Our "new logo":http://lukeredpath.co.uk/assets/2006/9/8/agileevolved_logo.jpg was designed by "Tokyo Cube":http://www.tokyocube.com/. Mine haven't arrived yet, but when they do I'll update the above photo with something a bit more high-quality (theres only so much you can do in Photoshop to improve a camera phone picture).
+
+There will hopefully be many of these being handed out at next week's "European RailsConf":http://europe.railsconf.org/.

@@ -1,0 +1,33 @@
+--- 
+:format: :textile
+:title: Unobtrusive JS 0.2.2 - "the two in one day!" release
+:published_on: Thu Aug 10 17:55:00 UTC 2006
+---
+I'm sure many people are aware of the risks in running pre-1.0 software/plugins and that there are likely to be many bugs discovered until that 1.0 release finally hits (and beyond).
+
+Unfortunately, it takes really working with a Rails plugin to find problems and I have been doing so today. I encountered a strange error where the plugin was generating IDs for elements that shouldn't have any javascript events attached.
+
+**Update 21/08/2006**: The latest version of this plugin is 0.3 - please see [this post](http://www.lukeredpath.co.uk/2006/8/21/ujs-rails-plugin-0-3-new-name-new-website) and the [official UJS website](http://www.ujs4rails.com) for more information.
+
+bc(ruby).. def tag_options(opts)
+  unless opts[:inline]
+    JAVASCRIPT_EVENTS.each do |event|
+      if opts.include?("on#{event}") # this was the culprit!
+        opts['id'] = generate_html_id unless opts['id']
+        register_js_behaviour("##{opts['id']}:#{event}",
+                  opts["on#{event}"]) unless opts["on#{event}"].nil?
+        opts.delete("on#{event}")
+      end
+    end
+  end
+  rails_tag_options(opts)
+end
+
+p. What it turned out that was happening was that some Rails helpers were adding *empty* onclick handlers to some tags so they were being picked up by the above code. All that was required was a simple fix:
+
+bc(ruby).. # get rid of this
+# if opts.include?("on#{event}") 
+# and use this:
+unless opts["on#{event}"].blank?
+
+p. So [grab Unobtrusive Javascript for Rails 0.2.2](http://opensource.agileevolved.com/svn/root/rails_plugins/unobtrusive_javascript/tags/rel-0.2.2/) while its hot!

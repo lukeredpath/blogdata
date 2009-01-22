@@ -1,0 +1,30 @@
+--- 
+:format: :textile
+:title: "UJS Rails Plugin 0.3: new name, new website"
+:published_on: Mon Aug 21 13:05:00 UTC 2006
+---
+"Dan":http://www.danweb.net and I are please to announce the biggest release of the Unobtrusive Javascript for Rails plugin - now simply known as UJS. This is a big release in many ways - we've got some important bug fixes in here, some great new helper functionality and most importantly: caching. The other big news is that the UJS plugin now has its "very own website":http://www.ujs4rails.com/2006/8/17/welcome-to-the-new-ujs-rails-plugin-website.
+
+The website is the place to go for news, information, release announcements (although I will still announce releases on this blog) and tips and tricks - everything you need to get started with the UJS plugin.
+
+Before you rush off to check out the new site, here is a quick overview of some of new features:
+
+* Added out-of-the box caching using HTTP ETags and advanced behaviour caching
+* Added new @apply_behaviours@</pre> functionality for applying multiple behaviours at once.
+* Added a series of behaviour helpers to make applying Scriptaculous effects unobtrusively easy.
+
+There are also some bug fixes, some refactorings and significantly improved test coverage. For full details, see the announcement on the "UJS website":http://www.ujs4rails.com.
+
+Finally, the other big change is that the Subversion repository has changed location, as has the place to report issues with the plugin: the plugin now has its own dedicated Trac.
+
+The plugin repository is now located at:
+
+"http://source.ujs4rails.com":http://source.ujs4rails.com
+
+The latest version of the plugin now has its own tag, which should make it work with Rails' built-in script/plugin script:
+
+"http://source.ujs4rails.com/current/unobtrusive_javascript":http://source.ujs4rails.com/current/unobtrusive_javascript
+
+Finally, you can report issues on the UJS Rails Plugin Trac:
+
+"http://trac.ujs4rails.com":http://trac.ujs4rails.com

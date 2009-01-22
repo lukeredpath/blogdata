@@ -1,0 +1,20 @@
+--- 
+:format: :textile
+:title: Give me my Internet back!
+:published_on: Wed Sep 27 16:30:00 UTC 2006
+---
+Just in case you've been wondering where I've been...allow me to explain. Warning: ranting ahead!
+
+Last week mostly sucked, no thanks to the two companies above. Last month Sky announced that they were launching a new ADSL service called Sky Broadband. They were offering up to 16Mb with no caps for only Â£10 per month for Sky TV subscribers. My previous ISP, "Zen Internet":http://zeninternet.co.uk/ were good with decent support, but they were not cheap: Â£25 per month for up to 8Mb (I never got more than 3Mb) and a 20GB cap is not what I call good value for money. How could I not jump at the offer?
+
+It turns out that it was the worst decision I've made in a while. Through a combination of Sky's complete and utter incompetence and lack of communication and what I can only assume is laziness and more incompetence on BT's part, I have been without broadband net access at home since September 15th, which is when my Zen connection was cancelled. To make matters worse, we just moved offices here at Agile Evolved and we didn't get broadband installed until September 21st - nearly a week without any net access! My Sky connection should have been activated on the 11th but it wasn't. With RailsConf coming up I decided to wait until the following Monday to chase things up, and so began a week of constantly calling Sky (with up to half hour hold times) trying to find out what on earth was going on, only to be told that "there was a delay at BT's end". You see, because Sky is a LLU (local loop unbundled) service, BT, who run the phone exchange have to physically connect you to Sky's hardware. It never happened. At one point I was told there would be up to a 30 day delay. That's just not acceptable. 
+
+Sky must have known that demand would be massive so I don't buy any excuses of "underestimating the demand". Nor do I buy the complete passing of the buck to BT - Sky have to take responsibility too as they are the ones selling the services whilst BT struggle to cope.
+
+Things can't get any worse you might assume, but after cancelling my order yesterday, I rang up to confirm with Sky that it had been cancelled. I was told that it has and that the cancellation had been sent through to BT. Unfortunately the order has left what is known as a "marker" on my line which prevents me from ordering broadband from anybody else until it is removed. I rang up BT's wholesale division to have it removed and even though the lady was very helpful she told me that it my line was showing up as having an "incompatible product" and that it could take up to two weeks to have the marker removed. She promised to put it through as urgent and said that it could be done by next Monday, even tomorrow but the possibility remains that I will be without net access at home for another two weeks.
+
+The bottom line...if you are in the UK and were thinking about getting Sky Broadband - don't bother. At least, not for now. Wait until things are settled down a bit - I *might* be willing to give them another chance in 3 to 6 months but I seriously advice people to give them a miss for now unless you have some kind of backup, like a cable broadband connection that you can leave active until your Sky Broadband connection is up and running. If only I could get cable where I live, as I used Telewest cable when I lived in Wolverhampton and I never had a problem.
+
+And breathe...
+
+If there was one good thing that came out of my downtime last week it was that I was able to spend some time developing my Ruby Specifications library, ActiveSpec. More on that soon...

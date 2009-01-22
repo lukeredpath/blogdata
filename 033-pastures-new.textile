@@ -1,0 +1,28 @@
+--- 
+:format: :textile
+:title: Pastures New
+:published_on: Fri Dec 01 12:53:00 UTC 2006
+---
+Last Thursday was my last day working for "Agile Evolved":http://www.agileevolved.com. I enjoyed my time at AE and want to say thanks to "Jonathan":http://www.noodlesinmysandals.com for employing me in the first place and giving me the opportunity to grow as a programmer, work full-time with Ruby and Rails, contribute to the open-source community and to become an active part of the "London Ruby community":http://lrug.org. Good luck to everybody at Agile Evolved!
+
+h3. The new job
+
+This Monday I started my new job as Head of Software Development for a London-based media company. Unfortunately, at the request of my employers I'm unable to say who I am working for -- don't get excited, it isn't anybody you would have heard of anyway (probably) but I am really excited about the challenges I will be facing over the coming months.
+
+Obviously there is little I can say about what I will be working on at this moment in time but needless to say we will be fully utilizing the power of Ruby and RubyOnRails and other open source software on several large-scale projects in what could be one of the largest-scale deployments of a Ruby/Rails application. Exciting stuff! I'll try and post information on how we are using Ruby whenever I possibly can, confidentiality and approval from our PR department pending of course.
+
+h3. Project updates
+
+Some of you may be wondering where this leaves the numerous open-source projects that I am working on. Naturally, I will be very busy over the coming months but I was keen to stress that how important contributing to open-source software was to my new employers and I have their full support so my involvement will continue pretty much as it is, as will my participation in the Ruby community...I'll have to drag our CTO (aka my boss) down to the next "LRUG":http://lrug.org meeting.
+
+"Dan":http://danwebb.net and I will do our best to get a new release of "UJS":http://ujs4rails.com out of the door before the end of the year. It is most likely that we will put back any new features to a 0.5 release and concentrate on bugs and Rails 1.2 compatibility for 0.4. My work on "ActiveSpec":http://activespec.rubyforge.org will most likely be put off until the new year now. Meanwhile, "James":http://lazyatom.com and I are almost ready with the official Rails plugin repository -- it should hopefully be ready in time for the Rails 1.2 final release.
+
+I'm also happy to announce that I have officially joined the "RSpec":http://rspec.rubyforge.org development team. My initial contributions will likely be towards the RSpec TextMate bundle but I hope to get even more involved in the new year.
+
+h3. And finally...
+
+On the subject of moving on, I recently moved my blog from "Site5":http://site5.com to a "Rimuhosting VPS":http://rimuhosting.com. Site5 weren't bad for a shared host but they had no "Mongrel":http://mongrel.rubyforge.org support and frankly FastCGI and Rails is just painful.
+
+For those interested in my setup, I have two allocated IP addresses - I'm running "Nginx":http://nginx.net on one IP as a proxy to Mongrel for any Rails apps (currently just this blog) and lighttpd on the second IP address for serving up any static content or PHP apps that I might need (such as "Mint Stats":http://haveamint.com and "Roundcube Webmail":http://roundcube.net). The setup works well and was easy to get up and running -- not having to use Apache 2.2 also saves me plenty of resources which is great because I only have 160MB of RAM to play with on my current plan.
+
+I really recommend a VPS if you are running Rails apps and Rimuhosting are very good value for money. The only pain for me was setting up my mail server with Postfix, Dovecot and SpamAssassin which was a new and painful experience for me. I got there in the end though and I can now have my own Subversion repositories and I will eventually have an instance of Trac up and running for my various open-source projects. Stay tuned!

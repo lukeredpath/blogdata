@@ -1,0 +1,46 @@
+--- 
+:format: :textile
+:title: "RailsConf: Adventures in JavaScript testing by Thomas Fuchs"
+:published_on: Thu Sep 14 15:58:00 UTC 2006
+---
+I'm currently sitting in the main congress hall awaiting the start of Thomas Fuch's presentation. As I'm sure many readers of my blog are aware, I'm a huge advocate of testing, or to be specific, *good* testing. However, one thing that I've never managed to get into is unit testing with JavaScript. I've never really been aware of the tools available or how well it works.
+
+I'm going to write this post live; hopefully it won't just come across as a mish-mash of incoherent ramblings.
+
+* Traditional JavaScript "testing" generally revolves around @alert@. it can be useful sometimes but it generally doesn't offer anything interesting. Use it sparingly.
+
+* There are many common misconceptions or attitudes towards JavaScript: "we don't need tests for 10 lines of code"; "but you can't debug JavaScript". Wrong and wrong again. Enter unit testing for JavaScript.
+
+* Some options exist already, such as "jsunit":http://www.jsunit.net/. These have their problems, such as awkward syntax or problems with Prototype.
+
+* "Scriptaculous":http://script.aculo.us/ has its own unittest.js library. All you need to do is include the unittest.js file and an empty @div@ with a "testlog" HTML ID (defaults). Now you're ready to roll with Test.Unit.Runner.
+
+* Test.Unit.Runner looks quite similar to the standard xUnit family of testing libraries. It has the standard setup and teardown methods and a suite of assertions.
+
+* It has some good testing functionality for dealing with effects, and time-sensitive behaviour (wait function).
+
+* It has a basic benchmarking system too!
+
+* Rake integration is provided through a the "javascript_test plugin":http://dev.rubyonrails.org/svn/rails/plugins/javascript_test/ - it allows you to launch browsers and run your javascript unit tests through a single command: @rake test:javascripts@. It uses a WEBrick server and supports multiple browsers, including Camino, Firefox, Safari and Internet Explorer. It's fairly trivial to add support for other browsers too. It seems to be missing the functionality to close the browser after the rake test run. Perhaps the browser definition classes could be extended to support a "close" method that is called after the test run?
+
+* The plugin also provides a generator for generating test stub files (HTML format) in test/javascript.
+
+* Did I mention the browser-based test runner looks pretty sweet?
+
+* OK, here's the killer feature so far: RSpec-style syntax, including should* style expectations and context/spec format. I'm convinced, sign me up!
+
+* Some other hints and tips: If you aren't using Firebug already, then start using it! It is awesome and makes debugging AJAX and general JavaScript problems a lot easier. (as an aside, its also great for debugging your behaviours when you are using "UJS":http://www.ujs4rails.com). There is also a tool for Safari called "Drosera":http://webkit.org/blog/?p=61.
+
+* Don't forget your RJS templates either. RJS has some basic debugging support built-in (although this could really do with being expanded upon).
+
+During the question and answer session, "Simon Willison":http://simon.incutio.com mentioned a tool that was part of the "Dojo Toolkit":http://dojotoolkit.org/ that uses a command-line JavaScript interpreter to run its unit tests. It sounds interesting although I feel its a lot more useful to run the tests in the actual environment they are going to run in (i.e. the browsers). By introducing something like a separate interpreter that end-users aren't going to be using, you are relying on that interpreter being correct.
+
+All in all, it was a good talk and has really got me interested in unit testing with JavaScript. It's definately something I should be doing, especially as I am so strict about testing with the rest of my code.
+
+Finally, a word of warning for those who want to try a bit of live blogging: IRC is evil and distracting. Use with caution!
+
+h3. Links and useful information:
+
+* "Scriptaculous":http://script.aculo.us
+* #prototype IRC on Freenode.
+* "Rails Spinoffs Google Group":http://groups.google.com/group/rubyonrails-spinoffs

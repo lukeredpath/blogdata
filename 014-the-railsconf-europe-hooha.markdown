@@ -1,0 +1,28 @@
+--- 
+:format: :markdown
+:title: The RailsConf Europe HooHa
+:published_on: Fri Aug 04 10:37:00 UTC 2006
+---
+[David](http://www.loudthinking.com) posted an [entry](http://svn.lazyatom.com/public/plugin_repository/trunk) on the RubyOnRails weblog pushing people to go to RailsConf EU and a lot of people reacted negatively to it.
+
+The thing that most people reacted badly about was the price. Â£575 is a lot of money to spend for most people, especially freelancers and enthusiasts and the early bird price of Â£475 is still not cheap.
+
+The more cynical would think that the real reason David wants to encourage people to come along is because the organisers can make money from it. I doubt this is the case. However there has been a surprising lack of enthusiasm and hype surrounding the conference compared to the US conference which was hyped to the roof and I suspect the number one reason for this is the cost.
+
+That being said, there is really little excuse for much of the whining and moaning that has been going in the comments for the above post and elsewhere. Ultimately, its not about whether or not the conference is expensive (and I *do* think it is overpriced and yes, I am going) but whether or not you can justify the cost.
+
+If you can justify the cost, please, get a ticket and come along - I do feel it will be a worthwhile experience. You'll get to meet some interesting and clever people, talk Ruby and Rails for two days without people looking at you funny and its a great networking opportunity.
+
+If you can't justify the cost - fair enough. But don't go on about it - get over it; move on. The world is not going to end because you could not attend the conference. Your RubyOnRails skills are not going to suffer. I'd consider myself a good Ruby and Rails programmer and I didn't get to the level I'm at today with a full time, well-paid Rails job by going to conferences. Even if I could have *afforded* the flight and tickets to the US RailsConf (and I would have loved to go) there was no way I'd be able to justify that expense.
+
+Many people mentioned that the money they could spend on the conference would be better spent on books. Thats a fair point. If you have the money available do go and buy some books, you'll definitely benefit. I strongly recommend [Rails Recipes](http://www.amazon.co.uk/gp/product/0977616606/sr=8-1/qid=1154683085/ref=pd_ka_1/202-6841703-3484634?ie=UTF8&s=gateway) by Chad Fowler and [Domain Driven Design](http://www.amazon.co.uk/gp/product/0321125215/sr=8-1/qid=1154683108/ref=pd_ka_1/202-6841703-3484634?ie=UTF8&s=gateway) by Eric Evans.
+
+As I said I do believe the conference is far too expensive; but some of the bile being aimed at the organisers is ridiculous. Yes it would be nice to go but going to a conference is a privilege, not a necessity. Nobody is pointing a gun at your head and making you go. If you are in the UK, you could always try visiting a local Ruby Users Group, or starting your own if there isn't one.
+
+Regarding the price, if the main reason that it is so expensive is because it is being held in London - one of the most expensive cities in the world (I know, I live there!) then my advice to the organisers would be: hold it somewhere else. There are much cheaper venues with great air, road and rail transport links - Birmingham springs to mind. With the wealth of cheap flights out there, I'd even be happy to fly to somewhere on the continent for the conference - it would still probably work out cheaper.
+
+Finally, a lot of people were bitching about such and such feature not being in Rails (il8n mainly) and how Rails was making a fatal mistake by not having it in the core. If people haven't really picked up on this yet, let me re-iterate - Rails is *opinionated* software and I hope it stays that way. Yes there are times when I've wished for a feature but with Rails' plugin system there is no longer any excuse for bugging the core team for a particular feature - if you need it that badly, implement it as a plugin and share it with the world. There are already efforts going into [internationalisation](http://www.globalize-rails.org/) and [legacy database support](http://compositekeys.rubyforge.org/).
+
+The core should only ever have the key features that are essential to the majority of people - adding minority features (even if they are important minority features) will only lead to a bloated framework which is a contradiction to everything Rails is supposed to stand for. ActionWebService is already being stripped from the core into a plugin and there are other things I'd like to see extracted from the core into plugins as well - the Prototype/Scriptaculous helpers and most importantly the most useless Rails feature of all, scaffolding - a feature that anybody with an ounce of Rails experience has a need for other than for the occasional spike/prototype.
+
+I'm well aware that the current Rails plugin system is far from perfect - installing plugins could be made easier and its a pain to install plugins that make use of the standard Subversion trunk/tags/branches structure. But there are efforts [going](http://rubyforge.org/projects/rapt/) [on](http://svn.lazyatom.com/public/plugin_repository/trunk/) to improve this. If theres one thing you can do today to improve Rails and make yourself a more experienced Rails programmer - [write a plugin](http://nubyonrails.com/articles/2006/05/04/the-complete-guide-to-rails-plugins-part-i)!

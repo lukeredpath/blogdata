@@ -1,0 +1,22 @@
+--- 
+:format: :textile
+:title: New blogging engine and template
+:published_on: Fri Aug 18 11:35:00 UTC 2006
+---
+Like many other people, I've moved my blog over to "Mephisto":http://mephistoblog.com by Olson and Palmer (doesn't that sound like a 70s prog band?). I'd become very sick of Hemmingway though, even if I was using the less common white version, and with Mephisto coming with Hemmingway as its default theme its now even less unique, so it was time for a change. So I present to you...Sydney.
+
+Why Sydney? Absolutely no reason whatsoever. It was the first thing that came into my head. The template itself wasn't actually designed for my blog; it was designed for the new, forthcoming Unobtrusive Javascript plugin website, with a different color scheme. A bit of reworking later I now have it as a full-on blogging template for Mephisto and it supports multiple color schemes. The UJS website will be using "neopolitan". I call this one "mintchoc". I'm not 100% certain if I will stick with this color scheme but I'm very happy with the overall layout.
+
+Unfortunately I will not be releasing this template for others to use&hellip;to begin with anyway. Its nice to have your own unique theme so I'd like to keep it that way for the time being. I have no doubt that I will release the template to the community in the future though.
+
+h3. Backwards compatibility
+
+I've added a custom route to make sure all Wordpress URLs load the correct article - the only difference was the /index.php/ part of the Wordpress URL and a few of the article slugs needed tweaking. If you have any pages bookmarked, I'd recommend updating your bookmarks to the new URL. Archive pages will probably not work any more. I'm also yet to import the comments but I will do this over the coming days. Thanks to Chris McGrath for his "article on converting typo URLs to mephisto URLs":http://octopod.info/2006/6/12/converting-typo-to-mephisto which was a great help in getting this running properly.
+
+h3. Awesome syntax highlighting
+
+It's also worth mentioning that code syntax highlighting is provided by Dan Webb's awesome Javascript CodeHighlighter library, and a small Rails plugin that adds some Mephisto filters to use it. Dan hasn't set up a permanent home for the library yet and some of the language definition files could do with a bit of fleshing out, but its very easy to extend and its very fast. Naturally, its completely unobtrusive - your code will still be displayed sans-highlighting if Javascript is disabled and there's no more littering of your code with loads of <code>span</code> tags. Best of all, its completely language agnostic - use it with your Rails apps, your PHP apps, or with completely static HTML pages. "Grab CodeHighlighter for your own website":http://projects.danwebb.net/wiki/CodeHighlighter.
+
+h3. And finally&hellip;
+
+On the subject of the UJS website, Dan and I hope to have this, along with a 0.3 release out on Monday. The new feature contains some neat new features, some bug fixes, improved test coverage and most importantly...caching. Keep an eye out on Monday for more information and the new UJS Rails Plugin website.

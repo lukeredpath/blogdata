@@ -1,0 +1,12 @@
+--- 
+:format: :textile
+:title: Announcing Reevoo Labs
+:published_on: Thu Jul 03 16:58:00 UTC 2008
+---
+Here at Reevoo, we've just (literally) gone live with our new open-source website, "Reevoo Labs":http://labs.reevoo.com. Our old open-source site is moribund and now redirects to the new site.
+
+As well as our own personal projects, myself and the others here at Reevoo have developed some useful libraries and Rails plugins many of which we hope to share with the community, including the already well-known Ruby mocking library, "Mocha":http://labs.reevoo.com/projects/mocha. 
+
+The first couple of plugins considered ready for public consumption are already up on the site (sorry about the lack of Subversion repository - all of our code is in a private repository and we're still working on a mirror - I'll try and get some of the projects up on my "GitHub project page":http://github.com/lukeredpath next week).
+
+As well as acting as a place to share our various projects, we'll also be maintaining a blog which will contains some interesting articles on some of the problems we've faced and how we solved them as well as general Ruby/Rails articles. Look out for some interesting architecture/infrastructure pieces from our system admins in the next couple of weeks - don't forget to "subscribe to the Reevoo Labs Atom feed":http://labs.reevoo.com/feed/atom.xml.

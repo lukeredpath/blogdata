@@ -1,0 +1,104 @@
+--- 
+:format: :textile
+:title: Sending SMS messages from your Rails application
+:published_on: Wed Aug 29 15:46:00 UTC 2007
+---
+Something I've seen come up on the Ruby/Rails mailing lists/google groups from time to time is how to send SMS messages from your Rails app. In this article, I'll introduce you to my Ruby Clickatell library and how to use it to send SMS messages from your Rails application in no time.
+
+When it comes to sending an SMS using Ruby there are two approaches you can take. The first - and more complicated - is to use your own hardware and something like the "ruby-sms":http://raa.ruby-lang.org/project/ruby-sms/ library to communicate with the hardware. This set-up is time consuming, a pain to maintain and probably not very scalable.
+
+The second option is to take the much easier route and use an existing SMS gateway service. There are many SMS gateways out there that offer APIs (ranging from HTTP/FTP based to email and COM-based); one such provider is "Clickatell":http://www.clickatell.com who are one of the bigger providers out there with a range of services whose customers include Barclays Bank, the BBC and CNN.
+
+h3. Getting started with the Ruby Clickatell gem
+
+Before you can start sending SMS messages from your Rails app, you'll need a Clickatell account. You can sign up for an account (Clickatell Central API) on their website. Once you have signed up you can log into your account centre and add an HTTP service to your account - this will give you an API key that you will need to use in your code.
+
+Once you've signed up, you need to install the Ruby Clickatell gem. I've just released version 0.4 and its fast approaching being stable for production use - all it needs is some users to test it out a bit more extensively. So install it and give it a go:
+
+bc(shell).. $ sudo gem install clickatell
+
+p. The gem also comes with a handy command-line utility, "sms", which can be used to send SMS messages directly from the command line. For more information, simply run:
+
+bc(shell).. $ sms --help
+
+p. More information can be found on the "website":http://clickatell.rubyforge.org.
+
+h3. Integrating with Rails
+
+For our basic example application, which will use REST-ful conventions, we will expose a single resource - sms - which we can POST to to send an SMS to a specified recipient. First of all, lets create a simple wrapper around the Clickatell API which will act as our "resource" that takes a hash containing our username/password/api-key and has an ActiveRecord-style create method.
+
+bc(ruby).. require 'clickatell'
+
+class SMS
+  def initialize(config)
+    @config = config
+  end
+  
+  def create(recipient, message_text)
+    api.send_message(recipient, message_text)
+  end
+  
+  private
+    def api
+      @api ||= Clickatell::API.authenticate(
+        @config[:api_key],
+        @config[:username],
+        @config[:password]
+      )
+    end
+end
+
+p. The above wrapper isn't strictly necessary but it helps to keep our controller as "skinny":http://weblog.jamisbuck.org/2006/10/18/skinny-controller-fat-model as possible.
+
+For convenience, we'll want to keep our Clickatell credentials in a YAML file in the config folder of our Rails app:
+
+bc(yaml).. # config/clickatell.yml
+api_key: abcdefghi123
+username: joebloggs
+password: secret
+
+p. We'll also want to access this config within our Rails app easily:
+
+bc(yaml).. # config/environments/production.rb
+CLICKATELL_CONFIG = YAML.load(File.open(File.join(RAILS_ROOT, 'config', 'clickatell.yml')))
+
+p. h3. Bringing it altogether
+
+Now we'll want to configure our routing to expose our SMS resource:
+
+bc(ruby).. ActionController::Routing::Routes.draw do |map|
+  map.resource :sms
+end
+
+p. Next, we'll create our form under app/views/sms/new.rhtml:
+
+bc(ruby).. <% form_tag '/sms', :method => :post do -%>
+  <label>Enter the recipients mobile number:</label>
+  <%= text_field_tag "recipient" %>
+  <label>Enter your message:</label>
+  <%= text_area_tag "message_text" %>
+  <%= submit_tag "Send SMS" %>
+<% end %>
+
+p. Finally, all we have to do is create our controller's create method to handle the form submission.
+
+bc(ruby).. class SmsController < ApplicationController
+  def create
+    sms = SMS.new(CLICKATELL_CONFIG)
+    sms.create(params[:recipient], params[:message_text])
+    flash[:notice] = "Message sent succesfully!"
+    redirect_to :back
+  rescue Clickatell::API::Error => e
+    flash[:error] = "Clickatell API error: #{e.message}"
+    redirect_to :back
+  end
+end
+
+p. And thats all there is to it. Of course, in a real application you might want to think about things such as validation of required attributes and message length. I'll leave that as an exercise to the reader.
+
+For more information:
+
+  * "Ruby Clickatell API Website":http://clickatell.rubyforge.org
+  * "Ruby Clickatell Documentation":http://clickatell.rubyforge.org/rdoc/
+  * "Rubyforge project page":http://rubyforge.org/projects/clickatell
+  * "Clickatell Gateway information":https://www.clickatell.com/products/gateway.php

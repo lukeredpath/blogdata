@@ -1,8 +1,7 @@
+---
 :title: Squeemote, the Squeezebox iPhone remote, ready for sale
 :format: :textile
 ---
----
-
 After some wrangling back and forth, I'm happy to announce that my first iPhone application, Squeemote (formerly iSqueeze) is now "available on the iTunes application store":http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=298005260&mt=8.
 
 !>http://farm4.static.flickr.com/3193/3120384208_d0211a396c.jpg?v=0!

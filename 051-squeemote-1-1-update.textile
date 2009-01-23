@@ -16,8 +16,8 @@ Squeemote 1.1 was finally approved by Apple this morning and is now <a href="htt
 * Added "disable auto-lock" setting to prevent device from going into standby.
 * Numerous bug-fixes and performance/reliability improvements.
 
-There are a few outstanding known issues mainly relating to Squeemote no longer picking up changes from the server after coming out of sleep. These will be resolved in 1.2 which is progressing nicely and will hopefully be submitted to Apple in the next week or so.
+There are a few outstanding known issues mainly relating to Squeemote no longer picking up changes from the server after coming out of standby. These will be resolved in 1.2 which is progressing nicely and will hopefully be submitted to Apple in the next week or so.
 
-I'm also pleased to announce that Squeemote now has "it's own website":http://lukeredpath.co.uk/squeemote. It's not entirely finished so a few things may be broken but it will be finished off over the weekend. I'll also be adding a Help/FAQ page to the site over the weekend.
+I'm also pleased to announce that Squeemote now has "it's own website":http://lukeredpath.co.uk/squeemote. It's not quite finished yet but I believe in releasing as soon as possible. Look out for a Help/FAQ page over the weekend.
 
 On a technical note, I did a fairly significant piece of refactoring to the underlying code that retrieves the remote data and displays a "Loading..." view whilst this is happening. I hope to write a blog post about the methods I used to accomplish this and will be releasing the generic code behind this under the MIT license.

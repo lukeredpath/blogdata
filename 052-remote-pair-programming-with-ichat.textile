@@ -1,0 +1,15 @@
+---
+:title: Remote pair-programming using iChat
+:published_on: Tue Feb 03 15:40:17 +0000 2009
+:format: :textile
+---
+
+When I worked at Reevoo we tried to live by a mantra of "pair on all production code". Sometimes this wasn't practical (there would often be times when there was an odd number of us available) but its a rule we tried to stick to wherever possible.
+
+Obviously, now I have gone freelance, pairing isn't always a luxury I'll have - that's fine, I'm more than comfortable working on my own - but I've always felt that some of the best code I've ever written has been code that I have written in a pair. Fortunately, for my latest client, I am able to work with my former Reevoo colleague "James Adam":http://interblah.net who some of you may know as the author of the "Rails Engines":http://rails-engines.org/ plugin and one of the co-organisers of the "London Ruby User Group":http://lrug.org and the awesome "RubyManor conference":http://rubymanor.org/ (don't forget to "check out some of the videos":http://rubymanor.org/videos/).
+
+From the outset, we were both agreed that we would prefer to pair on as much of the code as possible. The problem would be that we wouldn't always be in the same location. We've both taken up memberships at "The Hub":http://the-hub.net/ which gives us a shared space to work once a week or so but the rest of the time we would both be working from home. 
+
+This isn't a new problem; in fact it was one that "some":http://www.floehopper.org/ "of us":http://chrisroos.co.uk/ had already experienced due to remote working. Those guys "seemed to get on quite well":http://blog.floehopper.org/articles/2008/03/13/remote-pair-programming using a combination of "screen":http://en.wikipedia.org/wiki/GNU_Screen and "vim":http://www.vim.org/. However, vim isn't really my bag and I'm far more productive using my editor of choice, "Textmate":http://macromates.org.
+
+"VNC":http://www.realvnc.com/ was an obvious solution but if you're both Mac users,  "iChat":http://www.apple.com/macosx/features/ichat.html offers a far more integrated solution, offering instant-messaging, voice chat and most importantly, seamless screen-sharing. iChat's built-in screen-sharing solution is fast enough to work on one person's machine whilst making it easy to switch back to your own machine when necessary. Even better is if you have a dual-screen setup (I run my MacBook connected to a Dell 20" monitor). Using this setup, I can run James' screen on my Dell, leaving my MacBook free for background tasks like email, twitter etc.

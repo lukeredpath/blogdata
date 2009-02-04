@@ -24,6 +24,8 @@ What has surprised me the most is just how effective this approach has been. I f
 
 * *Agree on who* is driving at any given time, and take it in turns, swapping periodically. James and I tend to work using the "driver writes a test, pair implements test" approach. We'll swap roles frequently but its important to know who is the main driver so you aren't always trying to type at the same time or grabbing the mouse when somebody is trying to move in the other direction. This is probably more of an issue with remote pairing than normal pairing (unless you're using multiple keyboards/mice!).
 
+* *Don't forget* that when you are connected to your pair's machine (and it's in the foreground), all of your keystrokes will be sent to the remote machine. <code>def my_methodhello mum</code> probably won't pass any tests.
+
 * *Bonus Tip*: Quicksilver can be useful for leaving the equivalent of little notes to eachother whilst the other person is away; if you're pair has gone to make a tea/popped to the toilet and you need to leave too, just leave them a nice big message on their screen - bring up Quicksilver, hit Cmd+Period to enter text mode, write your message then hit tab and select "Large Type". They can't miss it.
 
 If you've never paired before, or have been put off of pairing because you work remotely, give it a try; you may find you write better code than you ever did before. Does anybody else pair remotely? If so, I'd love to hear your tips.

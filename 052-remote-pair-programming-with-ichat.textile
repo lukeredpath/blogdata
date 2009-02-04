@@ -8,11 +8,15 @@ When I worked at "Reevoo":http://www.reevoo.com we tried to live by a mantra of 
 
 Obviously, now I have gone freelance, pairing isn't always a luxury I'll have - that's fine, I'm comfortable working on my own - but I've always felt that some of the best code I've ever written has been code that I have written in a pair. Fortunately, for my latest client, I am able to work with my former Reevoo colleague "James Adam":http://interblah.net who some of you may know as the author of the "Rails Engines":http://rails-engines.org/ plugin and one of the co-organisers of the "London Ruby User Group":http://lrug.org and the awesome "RubyManor conference":http://rubymanor.org/ (don't forget to "check out some of the videos":http://rubymanor.org/videos/).
 
+h3. Coding remotely
+
 From the outset, we were both agreed that we would prefer to pair on as much code as possible. The problem would be that we wouldn't always be in the same location. We've both taken up membership at "The Hub":http://the-hub.net/ which gives us a shared space to work once a week or so but the rest of the time we would both be working from home. 
 
 This isn't a new problem; in fact it was one that "some":http://www.floehopper.org/ "of us":http://chrisroos.co.uk/ at Reevoo "have experience with":http://blog.floehopper.org/articles/2008/03/13/remote-pair-programming using a combination of "screen":http://en.wikipedia.org/wiki/GNU_Screen and "vim":http://www.vim.org/. However, vim isn't really my bag and I'm far more productive using my editor of choice, "Textmate":http://macromates.org.
 
 "VNC":http://www.realvnc.com/ was an obvious solution but if you're both Mac users,  "iChat":http://www.apple.com/macosx/features/ichat.html offers a far more integrated solution, offering instant-messaging, voice chat and most importantly, seamless screen-sharing. iChat's built-in screen-sharing solution is fast enough to work on one person's machine whilst making it easy to switch back to your own machine when necessary. Even better is if you have a dual-screen setup (I run my MacBook connected to a Dell 20" monitor). Using this setup, I can run James' screen on my Dell, leaving my MacBook free for background tasks like email, twitter etc. It's not perfect, there are a few technical niggles; but it has worked well for us so far.
+
+h3. Remote pairing tips
 
 What has surprised me the most is just how effective this approach has been. I feel like we have been working just as effectively as if we had been sat in the same room together. We get from all of the usual benefits of pairing; the ability to bounce ideas off each-other, catch minor mistakes that the other person has missed, discuss alternative approaches to a problem and tempering another person's enthusiasm with some caution (e.g. "maybe we could do [some cool idea]...yes that would be good but do we really need to do it now?"). If I would offer some tips when using this approach, they would be:
 

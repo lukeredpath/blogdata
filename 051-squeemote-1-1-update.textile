@@ -1,5 +1,6 @@
 ---
 :title: Squeemote 1.1 now available in the iTunes store
+:published_on: 23 Jan 2009
 :format: :textile
 ---
 Squeemote 1.1 was finally approved by Apple this morning and is now <a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=298005260&mt=8">available in the iTunes store</a>. This is quite a hefty update with a number of new features, improvements to existing ones and numerous bug and performance fixes. Here's the run down of changes:

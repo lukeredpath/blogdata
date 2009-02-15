@@ -1,8 +1,9 @@
 --- 
-:format: :markdown
 :title: Unobtrusive Javascript in Rails...what if?
 :published_on: Tue Jun 06 00:22:00 UTC 2006
 ---
+<div class="notice">Update 15 Feb 2009: The UJS plugin for Rails is no longer actively maintained but you can find the <a href="http://github.com/lukeredpath/ujs4rails">the source on github</a>.</div>
+
 What if...you could produce accessible, unobtrusive javascript, using Rails built-in javascript/prototype helpers, with just one extra line of code in your layout, a plugin, and one small enhancement to the helpers? Something like this:
 
 	<% form_remote_tag :controller => 'foo', :action => 'bar', :unobtrusive => true %>

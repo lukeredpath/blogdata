@@ -3,6 +3,8 @@
 :title: Unobtrusive Javascript broken in Edge Rails, small fix release
 :published_on: Thu Aug 10 12:26:00 UTC 2006
 ---
+<div class="notice">Update 15 Feb 2009: The UJS plugin for Rails is no longer actively maintained but you can find the <a href="http://github.com/lukeredpath/ujs4rails">the source on github</a>.</div>
+
 We're currently using Edge Rails and the Unobtrusive Javascript for Rails plugin in the forthcoming [Rails Plugin Repository](http://svn.lazyatom.com/public/plugin_repository/trunk/) and after a Subversion update today, something seems to have broken the Unobtrusive Javascript plugin.
 
 I'm not sure what caused the breakage but the problem was a minor one; after some investigation it turned out that the unobtrusive javascript controller was not being automatically being required by Rails even though its parent folder had been added to the Rails load path. The fix was as simple as explicitly requiring the controller file and everything is now fine. <del>[Release 0.2.1](http://opensource.agileevolved.com/svn/root/rails_plugins/unobtrusive_javascript/tags/rel-0.2.1/)</del> addresses this issue and also adds an about.yml file containing plugin meta-data.

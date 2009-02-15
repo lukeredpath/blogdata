@@ -3,6 +3,8 @@
 :title: Update to Unobtrusive Javascript Plugin
 :published_on: Wed Jun 07 14:33:00 UTC 2006
 ---
+<div class="notice">Update 15 Feb 2009: The UJS plugin for Rails is no longer actively maintained but you can find the <a href="http://github.com/lukeredpath/ujs4rails">the source on github</a>.</div>
+
 Some small changes and one major bug fix have been checked into Subversion today:
 
 * The controller action that serves up event-selector.js, eliminating the need to manually copy it to your public/javascripts folder, was looking for the js file in the wrong place, stopping the whole plugin from working. If you've already discovered this, **please run an update**.

@@ -3,6 +3,8 @@
 :title: "Release: Unobtrusive Javascript For Rails 0.2"
 :published_on: Tue Aug 01 03:17:00 UTC 2006
 ---
+<div class="notice">Update 15 Feb 2009: The UJS plugin for Rails is no longer actively maintained but you can find the <a href="http://github.com/lukeredpath/ujs4rails">the source on github</a>.</div>
+
 [Dan Webb](http://www.vivabit.com/bollocks) and I are happy to announce the latest release of the Unobtrusive Javascript plugin for Rails. This release packs in lots of cool new features, a few changes to old ones and some performance enhancements.
 
 **Update 21/08/2006**: The latest version of this plugin is 0.3 - please see [this post](http://www.lukeredpath.co.uk/2006/8/21/ujs-rails-plugin-0-3-new-name-new-website) and the [official UJS website](http://www.ujs4rails.com) for more information.

@@ -3,6 +3,8 @@
 :title: UJS @ RailsConf Europe 2006
 :published_on: Fri Sep 15 13:35:00 UTC 2006
 ---
+<div class="notice">Update 15 Feb 2009: The UJS plugin for Rails is no longer actively maintained but you can find the <a href="http://github.com/lukeredpath/ujs4rails">the source on github</a>.</div>
+
 There has been a tremendous amount of interest at RailsConf Europe in the "UJS Rails Plugin":http://www.ujs4rails.com. "Dan":http://www.danwebb.net gave his talk on Thursday morning and it was a struggle to get in; it was completely oversubscribed (I had to use the old 'but I'm the co-author!' line just to get in). It was great to see the interest it had generated. The talk proved so popular that a second presentation was scheduled on the Friday in the main congress hall which again proved really popular; we managed to fill up most of the room despite it being lunch - not a bad achievement.
 
 Dan gave a great presentation that went into the full details of the whys and wheres of unobtrusive scripting before giving a run down of the core UJS features, wrapping up with a small case study: building an AJAX-powered shopping cart using UJS. He showed how to build the shopping cart so it works in a traditional manner without JavaScript and then he used UJS to layer the additional behaviour on top of that.

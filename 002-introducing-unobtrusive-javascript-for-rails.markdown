@@ -3,6 +3,8 @@
 :title: Introducing Unobtrusive Javascript for Rails
 :published_on: Tue Jun 06 22:23:00 UTC 2006
 ---
+<div class="notice">Update 15 Feb 2009: The UJS plugin for Rails is no longer actively maintained but you can find the <a href="http://github.com/lukeredpath/ujs4rails">the source on github</a>.</div>
+
 Rails makes a lot of things easier for a developer. One of those things is AJAX. The built-in Javascript and AJAX helpers, such as form\_remote\_tag and link\_to\_remote, make developing AJAX apps a breeze. But if there has every been one major bone of contention with these helpers, it's the markup they produce. Developers have been well aware of the need to separate content from presentation with CSS for a while now - less prevalent is the recognition of the benefits in separating *behaviour* from content.
 
 **Update 21/08/2006**: The latest version of this plugin is 0.3 - please see [this post](http://www.lukeredpath.co.uk/2006/8/21/ujs-rails-plugin-0-3-new-name-new-website) and the [official UJS website](http://www.ujs4rails.com) for more information.

@@ -3,6 +3,8 @@
 :title: Unobtrusive JS 0.2.2 - "the two in one day!" release
 :published_on: Thu Aug 10 17:55:00 UTC 2006
 ---
+<div class="notice">Update 15 Feb 2009: The UJS plugin for Rails is no longer actively maintained but you can find the <a href="http://github.com/lukeredpath/ujs4rails">the source on github</a>.</div>
+
 I'm sure many people are aware of the risks in running pre-1.0 software/plugins and that there are likely to be many bugs discovered until that 1.0 release finally hits (and beyond).
 
 Unfortunately, it takes really working with a Rails plugin to find problems and I have been doing so today. I encountered a strange error where the plugin was generating IDs for elements that shouldn't have any javascript events attached.

@@ -35,7 +35,7 @@ Until I can test out Airport performance on my Mac Mini in Leopard, I can't rule
 
 Something else that I just noticed: there appears to be a rather nasty looking, if ultimately harmless, rendering bug when scrolling in Finder when in column mode:
 
-!http://static.lukeredpath.co.uk/~luke/leopard-rendering-bug.jpg!
+!http://farm4.static.flickr.com/3217/3281695126_d9b5ae9d19_o.jpg!
 
 h3. More Airport updates
 

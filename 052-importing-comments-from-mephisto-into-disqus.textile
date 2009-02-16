@@ -1,0 +1,13 @@
+---
+:title: Importing comments from Mephisto into Disqus
+:published_on: 16 Feb 2009
+:format: :textile
+---
+
+As part of my continuing effort to strip Marley down to the bare-essentials and make it as simple as possible, I've moved my comments over to "Disqus":http://disqus.com. This means I don't have to worry about having a database for comments, building tools to moderate those comments or handle spam. I simply drop the comments directly into the page using a snippet of Javascript (I'm actually using "Norman Clarke's Ruby disqus library":http://github.com/norman/disqus/tree/master to make this even easier).
+
+To import my old Marley comments into Disqus, I used "Locomotivation's":http://locomotivation.com handy "Sinatra Disqus Importer":http://www.locomotivation.com/blog/2008/12/01/disqus-sinatra-importer.html. It's a super-simple Sinatra app that takes an RSS feed of your existing blog posts and comments and uses that to feed the comments into Disqus using it's API.
+
+I wanted to do the same for all of my old Mephisto-powered blog comments. Doing this was fairly trivial, it just required a script to take the content from the Mephisto database and spit out an RSS feed that I could use with the Sinatra importer. Having imported a mysql dump from my server into my local MySQL database, I was able to use ActiveRecord and Builder to generate the RSS feed; here's the code in case it's of any use to anybody. It's a bit rough and you might need to tweak it a bit but it does the job. 
+
+<script src="http://gist.github.com/64712.js"></script>

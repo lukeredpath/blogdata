@@ -1,6 +1,6 @@
 ---
 :title: Importing comments from Mephisto into Disqus
-:published_on: 16 Feb 2009
+:published_on: 16 Feb 2009 16:00
 :format: :textile
 ---
 

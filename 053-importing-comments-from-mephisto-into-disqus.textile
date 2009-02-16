@@ -11,4 +11,4 @@ To import my old Marley comments into Disqus, I used "Locomotivation's":http://l
 I wanted to do the same for all of my old Mephisto-powered blog comments. Doing this was fairly trivial, it just required a script to take the content from the Mephisto database and spit out an RSS feed that I could use with the Sinatra importer. Having imported a mysql dump from my server into my local MySQL database, I was able to use ActiveRecord and Builder to generate the RSS feed; here's the code in case it's of any use to anybody. It's a bit rough and you might need to tweak it a bit but it does the job. 
 
 <script src="http://gist.github.com/64712.js"></script>
-<noscript><a href="View this gist on github">http://gist.github.com/64712.js</a></noscript>
+<noscript><a href="http://gist.github.com/64712.js">View this gist on github</a></noscript>

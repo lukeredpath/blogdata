@@ -34,3 +34,5 @@ I'm still not sure how this will take into account sync groups but I have a feel
 * *Power* control for each device! (another much requested feature and a feature I curse myself for not having implemented sooner)
 
 This will be the focus for the next release (1.2) but there will be a few other extra features thrown in such as browse by Genre.
+
+Finally, in case you missed it, Squeemote now has "an official home":http://lukeredpath.co.uk/squeemote.

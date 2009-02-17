@@ -21,15 +21,10 @@ h3. Remote pairing tips
 What has surprised me the most is just how effective this approach has been. I feel like we have been working just as effectively as if we had been sat in the same room together. We get from all of the usual benefits of pairing; the ability to bounce ideas off each-other, catch minor mistakes that the other person has missed, discuss alternative approaches to a problem and tempering another person's enthusiasm with some caution (e.g. "maybe we could do [some cool idea]...yes that would be good but do we really need to do it now?"). If I would offer some tips when using this approach, they would be:
 
 * *Make sure* you're both ready to start before you get going. Nobody likes to feel like they are being pressured into doing something. Pair-programming all day can be really draining so make sure you're both happy to begin.
-
 * *Don't hesitate* to suggest to your pair that it's time for a break. It can be good to stop for 5 minutes every now and again to make a cup of tea, catch up on some emails.
-
 * *Try to avoid* unnecessary distractions whilst in full-flow. Try to turn off other IM clients or at least set your status so people know you shouldn't be disturbed. Disable growl notifications or other annoying popups (e.g. Twitter clients). There will always be a few minutes downtime here and there which you can use to check these. Trying to do it whilst in the middle of pairing may lead to errors or missing important information and its unfair on your pair if you're not paying attention.
-
 * *Agree on who* is driving at any given time, and take it in turns, swapping periodically. James and I tend to work using the "driver writes a test, pair implements test" approach. We'll swap roles frequently but its important to know who is the main driver so you aren't always trying to type at the same time or grabbing the mouse when somebody is trying to move in the other direction. This is probably more of an issue with remote pairing than normal pairing (unless you're using multiple keyboards/mice!).
-
 * *Don't forget* that when you are connected to your pair's machine (and it's in the foreground), all of your keystrokes will be sent to the remote machine. <code>def my_methodhello mum</code> probably won't pass any tests.
-
 * *Bonus Tip*: Quicksilver can be useful for leaving the equivalent of little notes to eachother whilst the other person is away; if you're pair has gone to make a tea/popped to the toilet and you need to leave too, just leave them a nice big message on their screen - bring up Quicksilver, hit Cmd+Period to enter text mode, write your message then hit tab and select "Large Type". They can't miss it.
 
 If you've never paired before, or have been put off of pairing because you work remotely, give it a try; you may find you write better code than you ever did before. Does anybody else pair remotely? If so, I'd love to hear your tips.

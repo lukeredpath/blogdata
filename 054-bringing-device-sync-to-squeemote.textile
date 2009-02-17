@@ -1,5 +1,5 @@
 ---
-:title: Bringing Device Sync to Squeemote
+:title: Bringing device sync to Squeemote
 :published_on: 17 Feb 2009 16:00
 :format: :textile
 ---
@@ -29,8 +29,8 @@ It's still in it's early stages but here's how I see it working:
 
 I'm still not sure how this will take into account sync groups but I have a feeling that this might be enough, certainly for an initial release. Other little bonus features from this interface are:
 
-* Quickly change device from the now playing screen instead of having go back to library mode and finding the devices tab.
-* See instantly what is playing on each device.
-* Power control for each device! (another much requested feature and a feature I curse myself for not having implemented sooner)
+* *Quickly* change device from the now playing screen instead of having go back to library mode and finding the devices tab.
+* *See* instantly what is playing on each device.
+* *Power* control for each device! (another much requested feature and a feature I curse myself for not having implemented sooner)
 
 This will be the focus for the next release (1.2) but there will be a few other extra features thrown in such as browse by Genre.

@@ -21,3 +21,16 @@ p=.  !{width:400px}http://img.skitch.com/20090217-f8n163sctikajpmcfig6t4tdwr.jpg
 I've reworked the now playing interface slightly to accommodate some extra controls. On the left is the as-yet unimplemented mute control. The Squeemote icon on the right brings up the new Device Selector screen.
 
 p=.  !{width:400px}http://img.skitch.com/20090217-1txdck9w7jdrcq8wt4y82ne69g.jpg!:http://img.skitch.com/20090217-1txdck9w7jdrcq8wt4y82ne69g.jpg
+
+It's still in it's early stages but here's how I see it working:
+
+* In it's default mode (with sync disabled), it acts much like the existing devices screen. You can choose the active device and hit done, and you'll be taken back to the now playing screen for that device. In this mode, you only ever control a single device at a time.
+* With sync mode enabled, one device is marked as active (the device that was active when sync mode was enabled); for the other devices, the INACTIVE button becomes a SYNC button which when pressed, will sync that device with the active device. Control is always done through the active device.
+
+I'm still not sure how this will take into account sync groups but I have a feeling that this might be enough, certainly for an initial release. Other little bonus features from this interface are:
+
+* Quickly change device from the now playing screen instead of having go back to library mode and finding the devices tab.
+* See instantly what is playing on each device.
+* Power control for each device! (another much requested feature and a feature I curse myself for not having implemented sooner)
+
+This will be the focus for the next release (1.2) but there will be a few other extra features thrown in such as browse by Genre.

@@ -1,0 +1,23 @@
+---
+:title: Bringing Device Sync to Squeemote
+:published_on: 17 Feb 2009 16:00
+:format: :textile
+---
+
+Since the first release of Squeemote arrived in the app store in mid-December, over 500 people have bought a copy, which is more than I'd ever imagined considering it was only originally built to fulfill my own needs (I've wanted to be able to control my Squeezebox like this for years).
+
+It's been a busy couple of months for me, ever since I "decided to go it alone":http://lukeredpath.co.uk/blog/a-brave-new-world.html and especially since starting a new client project a few weeks ago, I've not had a lot of time to focus on Squeemote. I'm starting to pick it up again and I thought I'd give a small insight into one of the forthcoming and oft-requested features, device synchronization.
+
+h3. Getting the interface right
+
+Device synching isn't something I've used much in the past being the owner of just a single Squeezebox but now I also own a Squeezebox boom its something that has become more interesting to me. I'm also very aware that a lot of Squeemote owners own numerous devices and use synching frequently.
+
+I've always intended to support device synching but I omitted from the first release due to the complexity involved; I believe in releasing early and frequently and I didn't want this to hold back the initial release. When I say complexity, I don't mean so much on a technical level (the SqueezeCenter API makes it reasonably simple to sync devices) but more in terms of how to create an effective interface for synching devices.
+
+Having spent some time pondering the issue, I think I've come up with a good first draft of the interface and I want to get it out there for existing Squeemote owners to leave feedback. 
+
+p=.  !{width:400px}http://img.skitch.com/20090217-f8n163sctikajpmcfig6t4tdwr.jpg!:http://img.skitch.com/20090217-f8n163sctikajpmcfig6t4tdwr.jpg
+
+I've reworked the now playing interface slightly to accommodate some extra controls. On the left is the as-yet unimplemented mute control. The Squeemote icon on the right brings up the new Device Selector screen.
+
+p=.  !{width:400px}http://img.skitch.com/20090217-1txdck9w7jdrcq8wt4y82ne69g.jpg!:http://img.skitch.com/20090217-1txdck9w7jdrcq8wt4y82ne69g.jpg

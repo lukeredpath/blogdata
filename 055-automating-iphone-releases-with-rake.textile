@@ -1,0 +1,24 @@
+---
+:title: Automating iPhone releases with Rake
+:published_on: 03 March 2009 00:00:00
+:format: :textile
+---
+
+So far for me the release process for "Squeemote":http://lukeredpath.co.uk/squeemote has been fairly manual. After checking the final release several times using a development build, then an ad-hoc build, the time would come to create a distribution build. I've done this several times now and each time I've gone through the same tedious steps so I thought it's time I wrote myself a "Rake":http://rake.rubyforge.org task to automate the process somewhat.
+
+If you're a Ruby/Rails developer you will no doubt have Rake installed. Otherwise, with Ruby installed (which you should have as it ships with Leopard) then you can install the latest version of Rake using the command <code>gem install rake</code>. If you're not familiar with Rake, to use this task, create a file named <code>Rakefile</code> in the root of your project and add the code below. To run it, simply execute <code>rake release</code> from a Terminal.
+
+The Rake task is still in it's infancy but I will continue to update the "gist":http://gist.github.com as I make further improvements. It performs the following steps:
+
+# Bumps the build number using "agvtool":http://is.gd/llGp (see "this article on using agvtool":http://chanson.livejournal.com/125568.html)
+# Builds the release using my main target and by default the Development distribution
+# Creates a folder in my saved releases folder and copies the built package (and the dsym file) to the release folder.
+# Compresses the package into a zip file ready for uploading to Apple. 
+
+<script src="http://gist.github.com/72511.js"></script>
+
+Feel free to modify this to your needs; I encourage you to fork the gist and make your changes available for everybody else.
+
+The configuration and SDK can be overridden using environment variables so its possible to use this task to build ad-hoc releases too. The main feature currently missing is checking whether or not the build was successful or not before continuing, something I'll fix shortly. It also doesn't set the agvtool "marketing version" (e.g. 1.2), which I generally do manually on my repository master branch when starting work on the next version of my app.
+
+If anybody else has any nice tips for automating their iPhone development workflow, I'd like to hear them.

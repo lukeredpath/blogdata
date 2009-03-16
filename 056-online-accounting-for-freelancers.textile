@@ -1,0 +1,47 @@
+---
+:title: Online accounting for freelancers
+:published_on: 16 March 2009 00:00:00
+---
+When I decided to go freelance, I spent a lot of time researching "the different options available":http://www.contractoruk.com/managed_service_companies/ when it comes to running my own business. The simplest route is to register as a sole trader but this increases your liability and isn't the most tax-efficient route (all profit is treated as taxable income). I briefly considered operating through an "umbrella company":http://www.contractoruk.com/managed_service_companies/umbcos.html but after some troubles getting up and running with one I decided to bite the bullet and form my own limited company.
+
+Of course, with this option comes a whole host of administration and responsibilities; you're going to need an accountant. You can either find a good accountant and pay them for advice and preparing your end of year returns as and when you need them to or you can pay for a monthly service and have them take care of almost everything for you. Whichever option you choose, it is well worth learning some basic accounting principles and even if you're accountants are doing everything for you, I highly recommend keeping your own books too because ultimately as the company director you are liable for any mistakes.
+
+h3. Accounting software, the options
+
+If you're going to do your own books, you're probably going to need some kind of software to keep track of everything. You could use a spreadsheet but there are slicker options available. There are a variety of desktop software packages but there isn't much available for the Mac (and don't want to boot up Windows in a virtual machine just to do my accounts). After some research I came across two online services that cater for the UK: "FreeAgent":http://www.freeagentcentral.com/ and "Xero":http://www.xero.com/. I have used Xero for the past couple of months and have now moved over to FreeAgent for reasons I'll outline towards the end of this article.
+
+h3. Xero, "the worlds easiest accounting system"
+
+!>http://dl.getdropbox.com/u/570528/xero.png!
+
+Xero was the first service I came across; a New Zealand-based company who have recently branched out into the UK. They offer a full accounting solution for *£19 + VAT* per month. 
+
+Xero has an attractive and intuitive interface and it presents an overview of your company finances in a clear and concise manner. It will allow you to set up your various bank accounts (including any credit card or Paypal accounts) and import statements directly from your bank (it supports the standard OFX and QIF formats). It will generate attractive looking invoices for you and makes it really simple to track and manage your outstanding debtors including the ability to generate PDF statements and email reminders. 
+
+Dealing with expense claims can be a bit convoluted if you're a one-man company. Xero's expense claims features seem to be aimed more at larger companies that deal with multiple claims from multiple employees, requiring each claim to be itemized and approved which makes the process a bit long-winded.
+
+Xero's killer feature is it's transaction reconciliation interface. Xero maintains a strict separation between your "Xero balance" and your various bank account balances, which are reconciled when you import a statement. This is all done using a combination of clever transaction matching and an intuitive interface that makes bank reconciliation a piece of cake.
+
+h3. FreeAgent, "online accounting nirvana"
+
+!>http://dl.getdropbox.com/u/570528/freeagent.png!
+
+FreeAgent offers an online accountancy solution for a range of different setups, starting from £15 + VAT per month for sole traders up to £25 + VAT per month for limited companies. They also offer a great referral scheme where you receive a permanent 10% discount for each person you refer (and who signs up to a paying account) meaning you can actually get the service for nothing if you refer 10 people. Each person you refer also receives a 10% discount on the monthly subscription.
+
+FreeAgent is aimed squarely at freelancers and small businesses. Whilst Xero can be a bit intimidating for a newcomer to the world of accountancy, FreeAgent keeps things simple; instead of Accounts Receivable and Accounts Payable, you simple deal with Invoices and Bills. Reports are accessible and clear and concise and like Xero, the user dashboard prevents a great overview of your accounts. It even has an iCal feed of important dates (such as when PAYE, VAT and company returns are due).
+
+FreeAgent's focus on freelancers who operate their own limited companies is one of its strongest selling points; out-of-pocket expenses are dealt with easily, it has basic project management and time-tracking functionality and it does basic payroll for company directors. It even does the calculations for your personal self-assessment tax return.
+
+h3. Xero vs FreeAgent, a conclusion
+
+Having used Xero for a few months (and finding it a pleasure to use), I ultimately decided to move to FreeAgent for several reasons. 
+
+Firstly, and most importantly, was it's support for the flat-rate VAT scheme which Xero doesn't currently support. This effectively made Xero's reporting functionality useless to me as it wasn't able to deal with my VAT and turnover figures correctly. FreeAgent deals with this perfectly, even remembering to exclude revenue outside of the scope of VAT (i.e. for US-based clients).
+
+Secondly, the features aimed at small, one-man companies such as mine like the directors payroll, self-assessment calculations and simplified expense tracking means my life is made all the more easier, to the point where I'm actually considering canceling my monthly accountancy service and getting advice on an ad-hoc basis instead (at around a third of the cost).
+
+One thing missing from both Xero and FreeAgent is multi-currency support although both of them are apparently working on this. However, its not impossible to manage your foreign-currency invoices in either system although it requires doing the currency conversion and handling of exchange rate fluctuations manually.
+
+Despite having moved away from Xero, my overall experience with it was positive and they were very receptive to my feedback (several members of the Xero team can be found on Twitter). To get the most out of Xero it can be useful to learn about double-entry bookkeeping and some basic accountancy terminology but this isn't necessarily a bad thing; in fact I'd recommend doing this whichever system you use.
+
+Both offer free 30-day trials and neither lock you into contracts so if you're looking for a great, intuitive online accountancy system I'd recommend giving them both a try. Overall I feel that right now, FreeAgent offers the best combination of features and simplicity for freelancers. If you want to grab that 10% discount, you're welcome to "use my referral code":http://www.freeagentcentral.com/?referrer=31ccxhcm.

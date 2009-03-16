@@ -14,7 +14,7 @@ h3. Xero, "the worlds easiest accounting system"
 
 !>http://dl.getdropbox.com/u/570528/xero.png!
 
-Xero was the first service I came across; a New Zealand-based company who have recently branched out into the UK. They offer a full accounting solution for *£19 + VAT* per month. 
+Xero was the first service I came across; a New Zealand-based company who have recently branched out into the UK. They offer a full accounting solution for £19 + VAT per month. 
 
 Xero has an attractive and intuitive interface and it presents an overview of your company finances in a clear and concise manner. It will allow you to set up your various bank accounts (including any credit card or Paypal accounts) and import statements directly from your bank (it supports the standard OFX and QIF formats). It will generate attractive looking invoices for you and makes it really simple to track and manage your outstanding debtors including the ability to generate PDF statements and email reminders. 
 
